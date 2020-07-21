@@ -3,3 +3,6 @@ backend/_data/
 backend/seeder.js
 
 backend/config/config.env
+
+backend/node_modules
+frontend/node_modules
