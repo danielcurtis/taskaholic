@@ -1,89 +1,77 @@
 # Taskaholic Backend
 
-Taskaholic is a personal time and task management web application _under active development_. The backend is a proprietary, private API built using an express server.
+Backend API built with NodeJS, Express, and MongoDB.
 
-## MVP Functional Requirements v1.0
+## Prerequisites
 
-- CRUD Tasks (Children of Tags)
-- CRUD Tags (Parents of Tasks)
-- CRUD Habits
-- Authentication
+- Node
+- Docker Desktop
 
-## Technologies v1.0
+## Quick Start
 
-- NodeJS
-- Express
-- Docker
-- Kubernetes
-- AWS
-
-## Security v1.0
-
-- Sanitized data with `express-mongo-sanitize`
-- Secured headers with `helmet`
-- Cross-site scripting prevented with `xss`
-- Rate limited to **20 per minute** with `express-rate-limit`
-- Parameter pollution prevented with `hpp`
-- Allow CORS (for development) with `cors`
-
-## Roadmap
-
-- [x] Meet v1.0 functional and security requirements
-- [ ] Dockerize backend API to interact with React frontend
-- [ ] Setup CI/CD pipeline with Travis CI and GitHub
-- [ ] Deploy to AWS with Kubernetes for container management
-
-## Local Development
-
-### Environment Setup
-
-Clone the repo:
+1. Clone the entire monorepo: `git clone https://github.com/danielcurtis/taskaholic.git`
+2. Change to the frontend directory: `cd backend`
+3. Install dependancies: `npm install`
+4. Create env in config directory: `cd config; touch config.env`
+5. Add the following environment variables:
 
 ```
-git clone https://github.com/danielcurtis/taskaholic-backend.git
+NODE_ENV=
+PORT=
+MONGO_URI=
+JWT_SECRET=
+JWT_EXPIRE=
+JWT_COOKIE_EXPIRE=
+SMTP_HOST=
+SMTP_PORT=
+SMTP_EMAIL=
+SMTP_PASSWORD=
+FROM_EMAIL=
+FROM_NAME=
 ```
 
-Change into the project directory and install dependancies:
+6. Run the dev server at localhost:specified port `npm run dev`
+7. Run the production server at localhost:specified port `npm run start`
+8. Visit the documentation at _locahost:specified port_
+9. Test an API endpoint at _localhost:specified port/api/v1/auth/login/_
+
+## Contributing
+
+#### File structure
+
+The backend is laid out in 8 directories and the server.js file.
+
+1. Config - configuration for env variables and database
+2. Controllers - controllers for routes
+3. Middleware - middleware functions for routes
+4. Models - database structures for MongoDB
+5. Public - API documentation
+6. Routes - Routes for API, see documentation
+7. Utils - Utility functions such as sendMail
+8. Components - functional components such as dashboard or timesheet
+
+#### Coding Conventions
+
+- Include the following in JS files to type check variables (with VSCode) and use JS strict mode
 
 ```
-npm install
+// @ts-check
+'use strict';
 ```
 
-Create a `confing.env` file in the config directory:
+- Use single quotes and template literals
+- Follow ES6 practices
+- Use tabs or two spaces
+- Place functions in their respective directories
+- Use camelcase, descriptive naming conventions
 
-```
-cd config; touch config.env
-```
+#### GitHub Workflow
 
-There are a handful of environment variables that need to be added to the `config.env` file:
-
-```
-NODE_ENV
-PORT
-MONGO_URI
-JWT_SECRET
-JWT_EXPIRE
-JWT_COOKIE_EXPIRE
-SMTP_HOST
-SMTP_PORT
-SMTP_EMAIL
-SMTP_PASSWORD
-FROM_EMAIL
-FROM_NAME
-```
-
-### Available Scripts
-
-After setting up the environment, the following scripts can be ran.
-
-**Run development server:**
-
-```
-npm run dev
-```
-
-**Run production server:**
-
-```
-npm run start
-```
+1. Create a feature branch off of dev named "feature/describe-feature"
+2. Make changes
+3. Dynamically test changes
+4. Update documentation if needed
+5. Create a Pull Request to dev
+6. Changes will be reviewed, statically tested, and merged into dev
+7. Changes will be live on the dev server
+8. Changes will be merged into main (production) with the next release
