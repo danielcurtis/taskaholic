@@ -1,37 +1,62 @@
-# Blocking Time Frontend
+# Taskaholic Frontend
 
-## Functional Requirements v1.0
+User interface built with React and TailwindCSS.
 
-- Dashboard Overview Component
-- CRUD Tasks (Children of Tags) Component
-- CRUD Tags (Parents of Tasks) Component
-- CRUD Habits Component
-- Timesheet Overview Component
-- Authentication
+## Prerequisites
 
-## Technologies v1.0
+- Node
+- Docker Desktop
 
-- React
-- TailwindCSS
+## Quick Start
 
-## Roadmap
+1. Clone the entire monorepo: `git clone https://github.com/danielcurtis/taskaholic.git`
+2. Change to the frontend directory: `cd frontend`
+3. Install dependancies: `npm install`
+4. Run the app at localhost:3000: `npm run start`
+5. Build the app `npm run build`
+6. Test the app `npm run test`
+7. _For app to fully function, follow backend local dev instructions._
 
-- [ ] Meet functional requirements
-- [ ] Setup testing
-- [ ] Dockerize React app
+## Contributing
 
-## Installation
+#### File structure
 
-Clone the repo and then run
+The frontend is laid out in four main folders:
 
-`npm i`
+1. Assests - static files such as images
+2. Components - functional components such as dashboard or timesheet
+3. Context - context states for app such as user authentication
+4. Pages - main pages for app such as home or landing
 
-in the project root.
+Currently, TailwindCSS is used but this may change in future versions because of the overhead.
 
-## Available Scripts
+TailwindCSS is configured in `frontend/tailwind.config.js`
 
-In the root of the project directory, you can run the following commands:
+#### Coding Conventions
 
-- `npm run start` - Runs app in development mode at localhost:3000
-- `npm run test` - Launches the test runner in the interactive watch mode
-- `npm run build` - Builds the app for production to the `build` folder
+- Include the following in JS files to type check variables and use JS strict mode
+
+```
+// @ts-check
+'use strict';
+```
+
+- Use single quotes except for JSX
+- Follow ES6 practices
+- Use tabs or two spaces
+- Use classic functions for React components
+- Use arrow functions for util functions inside of React components
+- Export functions at the bottom of the file instead of inline
+- Components should have 1 file and a children directory for child components
+- Use camelcase naming conventions
+
+#### GitHub Workflow
+
+1. Create a feature branch off of dev named "feature/describe-feature"
+2. Make changes
+3. Dynamically test changes
+4. Update documentation if needed
+5. Create a Pull Request to dev
+6. Changes will be reviewed, statically tested, and merged into dev
+7. Changes will be live on the dev server
+8. Changes will be merged into main (production) with the next release
