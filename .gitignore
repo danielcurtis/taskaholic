@@ -1,0 +1,3 @@
+# Data seeding on backend
+backend/_data/
+backend/seeder.js
