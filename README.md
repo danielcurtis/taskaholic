@@ -30,7 +30,19 @@ _For local development, refer to the backend and frontend READMEs._
 - Parameter pollution prevented with `hpp`
 - Allow CORS (for development) with `cors`
 
-## Roadmap v1.0
+## Project Management
+
+Taskaholic uses the product itself, GitHub Projects, this README for an "agile-like" project management environment. 
+
+The following sprints are planned to get to v1.0:
+
+- [ ] UI API Integration: Inegrate frontend to backend
+- [ ] Big Sur UI: Update UI to match Big Sur UI
+- [ ] Responsive UI: Implement responsive UI
+- [ ] Docker Pipeline: Dockerize services and set up pipeline
+- [ ] QA: Set up tests and dev environement. Update docs.
+
+### Roadmap v1.0
 
 - [x] Create monorepo
 - [ ] Update documentation
