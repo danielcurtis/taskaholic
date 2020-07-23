@@ -1,5 +1,4 @@
 // @ts-check
-'use strict';
 
 import React, { useState } from 'react';
 import Icon from '../../assets/icon.png';

@@ -16,18 +16,21 @@ Backend API built with NodeJS, Express, and MongoDB.
 5. Add the following environment variables:
 
 ```
-NODE_ENV=
-PORT=
-MONGO_URI=
-JWT_SECRET=
-JWT_EXPIRE=
-JWT_COOKIE_EXPIRE=
-SMTP_HOST=
-SMTP_PORT=
-SMTP_EMAIL=
-SMTP_PASSWORD=
-FROM_EMAIL=
-FROM_NAME=
+NODE_ENV= development or production
+PORT= 5000 is default
+
+MONGO_URI= get from mongodb
+
+JWT_SECRET= generate hash using SHA256
+JWT_EXPIRE= 30 days is default
+JWT_COOKIE_EXPIRE= 30 days is default
+
+SMTP_HOST= get from mailtrap
+SMTP_PORT= get from mailtrap
+SMTP_EMAIL= get from mailtrap
+SMTP_PASSWORD= get from mailtrap
+FROM_EMAIL= hello@taskaholic.com
+FROM_NAME= name at Taskaholic
 ```
 
 6. Run the dev server at localhost:specified port `npm run dev`

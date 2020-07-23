@@ -1,5 +1,4 @@
 // @ts-check
-'use strict';
 
 import React from 'react';
 import FooterBar from './children/FooterBar';
