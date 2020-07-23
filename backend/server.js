@@ -1,3 +1,6 @@
+// @ts-check
+'use strict';
+
 const express = require('express');
 const dotenv = require('dotenv');
 const morgan = require('morgan');
@@ -35,7 +38,7 @@ app.use(cookieParser());
 
 // Dev logging middleware
 if (process.env.NODE_ENV === 'development') {
-  app.use(morgan('dev'));
+	app.use(morgan('dev'));
 }
 
 // Sanitize data
@@ -55,8 +58,8 @@ app.use(cors());
 
 // Rate limiting (20 per minute)
 const limiter = rateLimit({
-  windowMs: 10 * 60 * 100,
-  max: 20,
+	windowMs: 10 * 60 * 100,
+	max: 20,
 });
 app.use(limiter);
 
@@ -75,14 +78,14 @@ app.use(errorHandler);
 const PORT = process.env.PORT || 5000;
 
 const server = app.listen(PORT, () => {
-  console.log(
-    `Server listening on port ${process.env.PORT} in ${process.env.NODE_ENV} mode`
-  );
+	console.log(
+		`Server listening on port ${process.env.PORT} in ${process.env.NODE_ENV} mode`
+	);
 });
 
 // Handle unhandled promise rejections
 process.on('unhandledRejection', (err, promise) => {
-  console.log(`Error: ${err.message}`);
-  // Close server and exit process
-  server.close(() => process.exit(1));
+	console.log(`Error: ${err.message}`);
+	// Close server and exit process
+	server.close(() => process.exit(1));
 });

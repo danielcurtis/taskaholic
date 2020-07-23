@@ -1,10 +1,13 @@
+// @ts-check
+'use strict';
+
 const express = require('express');
 const {
-  getHabits,
-  getHabit,
-  createHabit,
-  updateHabit,
-  deleteHabit,
+	getHabits,
+	getHabit,
+	createHabit,
+	updateHabit,
+	deleteHabit,
 } = require('../controllers/habits');
 const Habit = require('../models/Habit');
 

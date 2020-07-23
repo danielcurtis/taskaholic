@@ -1,10 +1,13 @@
+// @ts-check
+'use strict';
+
 const express = require('express');
 const {
-  getTags,
-  getTag,
-  createTag,
-  updateTag,
-  deleteTag,
+	getTags,
+	getTag,
+	createTag,
+	updateTag,
+	deleteTag,
 } = require('../controllers/tags');
 const Tag = require('../models/Tag');
 
