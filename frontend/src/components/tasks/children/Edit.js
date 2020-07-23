@@ -1,6 +1,6 @@
 // @ts-check
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -68,8 +68,8 @@ function Edit({ setToggle, tasks, current }) {
 	};
 
 	return (
-		<div className="w-full sm:w-3/4 md:w-3/4 lg:w-5/6">
-			<form onSubmit={handleSubmit} className="flex flex-col">
+		<div>
+			<form onSubmit={handleSubmit}>
 				<label>Name</label>
 				<input
 					type="text"
@@ -100,7 +100,7 @@ function Edit({ setToggle, tasks, current }) {
 				<label>Timelog</label>
 				{time.map((el, i) => {
 					return (
-						<div key={i} className="flex flex-col">
+						<div key={i}>
 							<label>Time:</label>
 							<DatePicker
 								selected={new Date(time[i][0])}
@@ -111,10 +111,7 @@ function Edit({ setToggle, tasks, current }) {
 					);
 				})}
 
-				<input
-					type="submit"
-					value="Submit"
-					className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"></input>
+				<input type="submit" value="Submit"></input>
 			</form>
 
 			<button onClick={handleTimeClick}>New time log</button>
