@@ -59,7 +59,7 @@ const UserProvider = ({ children }) => {
 				data: {},
 			});
 		} catch (err) {
-			console.log(`Log out error in user context ${logout}`);
+			console.log(`Log out error in user context ${err}`);
 		}
 	};
 
