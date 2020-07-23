@@ -1,5 +1,4 @@
 // @ts-check
-'use strict';
 
 import React, { useContext, useEffect } from 'react';
 import axios from 'axios';

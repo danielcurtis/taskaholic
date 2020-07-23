@@ -1,5 +1,4 @@
 // @ts-check
-'use strict';
 
 import React, { useState } from 'react';
 import Modal from './children/Modal';

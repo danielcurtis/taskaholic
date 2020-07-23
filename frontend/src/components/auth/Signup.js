@@ -1,5 +1,4 @@
 // @ts-check
-'use strict';
 
 import React, { useState, useContext } from 'react';
 import { UserContext } from '../../context/User';
