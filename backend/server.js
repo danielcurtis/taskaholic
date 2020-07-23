@@ -14,6 +14,7 @@ const cors = require('cors');
 const path = require('path');
 const connectDB = require('./config/db');
 const errorHandler = require('./middleware/error');
+const csrf = require('csurf');
 
 // Load env vars
 dotenv.config({ path: './config/config.env' });
@@ -55,6 +56,12 @@ app.use(hpp());
 
 // Enable CORS
 app.use(cors());
+
+// CSRF Protection
+const csrfProtection = csrf({
+	cookie: true,
+});
+app.use(csrfProtection);
 
 // Rate limiting (20 per minute)
 const limiter = rateLimit({
