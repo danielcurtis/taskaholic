@@ -40,7 +40,7 @@ const TagSchema = new mongoose.Schema(
 
 // Cascade delete tasks when a tag is deleted
 TagSchema.pre('remove', async function (next) {
-	console.log(`Courses being removed from tag ${this._id}`);
+	console.log(`Tasks being removed from tag ${this._id}`);
 	await this.model('Task').deleteMany({ tag: this._id });
 	next();
 });
