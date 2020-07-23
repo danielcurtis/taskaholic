@@ -11,7 +11,7 @@ import Timesheet from '../components/timesheet/Timesheet';
 
 function Home() {
 	// Init view & component
-	const [view, setView] = useState('Dashboard');
+	const [view, setView] = useState('Habits');
 	let component = <Dashboard />;
 
 	// Set view, similar to React Router
@@ -23,7 +23,7 @@ function Home() {
 	else if (view === 'Timesheet') component = <Timesheet />;
 
 	return (
-		<div className="flex flex-wrap">
+		<div>
 			<Menu setView={setView} />
 			{component}
 		</div>

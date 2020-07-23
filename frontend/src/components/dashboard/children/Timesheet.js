@@ -24,18 +24,18 @@ function Timesheet() {
 	];
 
 	return (
-		<div className="inner bg-white mb-10 rounded-lg">
-			<table className="table-auto w-full">
+		<div>
+			<table>
 				<thead>
-					<tr className="bg-indigo-600 text-white inner">
-						<th className="px-2 py-1 rounded-tl-lg">Task</th>
-						<th className="px-2 py-1">M</th>
-						<th className="px-2 py-1">T</th>
-						<th className="px-2 py-1">W</th>
-						<th className="px-2 py-1">T</th>
-						<th className="px-2 py-1">F</th>
-						<th className="px-2 py-1">S</th>
-						<th className="px-2 py-1 rounded-tr-lg">S</th>
+					<tr>
+						<th>Task</th>
+						<th>M</th>
+						<th>T</th>
+						<th>W</th>
+						<th>T</th>
+						<th>F</th>
+						<th>S</th>
+						<th>S</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -44,14 +44,10 @@ function Timesheet() {
 						if (task.length > 20) task = task.substring(0, 19) + '...';
 
 						return (
-							<tr key={a} className="text-gray-700">
-								<td className="px-2 py-1">{task}</td>
+							<tr key={a}>
+								<td>{task}</td>
 								{el.time.map((el, b) => {
-									return (
-										<td key={b} className="px-2 py-1">
-											{el}
-										</td>
-									);
+									return <td key={b}>{el}</td>;
 								})}
 							</tr>
 						);

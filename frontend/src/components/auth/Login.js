@@ -20,18 +20,10 @@ function Login({ toggle, setToggle }) {
 				email: email,
 			});
 
-			setErr(
-				<p className="mt-2 text-blue-500">
-					Please, check your email for reset instructions.
-				</p>
-			);
+			setErr(<p>Please, check your email for reset instructions.</p>);
 		} catch (err) {
 			console.log(`ResetPwd err ${err}`);
-			setErr(
-				<p className="mt-2 text-red-500">
-					Error: Please, check your email address.
-				</p>
-			);
+			setErr(<p>Error: Please, check your email address.</p>);
 		}
 	};
 
@@ -40,18 +32,16 @@ function Login({ toggle, setToggle }) {
 		await login(email, password);
 		setBtn('Log In');
 		setErr(
-			<p className="mt-2 text-red-500">
+			<p>
 				Please, try again or{' '}
-				<span className="underline cursor-pointer" onClick={handleReset}>
-					reset your password.
-				</span>
+				<span onClick={handleReset}>reset your password.</span>
 			</p>
 		);
 	};
 
 	return (
 		<div>
-			<label className="font-medium">Email:</label>
+			<label>Email:</label>
 			<input
 				className={inputClass}
 				type="email"
@@ -60,7 +50,7 @@ function Login({ toggle, setToggle }) {
 					setEmail(e.target.value);
 				}}
 			/>
-			<label className="font-medium">Password:</label>
+			<label>Password:</label>
 			<input
 				className={inputClass}
 				type="password"
@@ -68,17 +58,9 @@ function Login({ toggle, setToggle }) {
 					setPassword(e.target.value);
 				}}
 			/>
-			<div className="flex justify-end mt-4">
-				<button
-					className="bg-owl-grn hover:bg-blue-700 text-white font-bold py-2 px-4 border border-owl-grn hover:border-transparent rounded-lg mr-2"
-					onClick={() => handleLogin()}>
-					{btn}
-				</button>
-				<button
-					className="bg-transparent hover:bg-blue-700 text-owl-grn font-bold hover:text-white py-2 px-4 border border-owl-grn hover:border-transparent rounded-lg"
-					onClick={() => setToggle(!toggle)}>
-					Sign Up
-				</button>
+			<div>
+				<button onClick={() => handleLogin()}>{btn}</button>
+				<button onClick={() => setToggle(!toggle)}>Sign Up</button>
 			</div>
 			{err}
 		</div>

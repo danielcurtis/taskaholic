@@ -45,12 +45,12 @@ function Menu({ setView }) {
 	};
 
 	return (
-		<div className="w-full sm:w-1/4 md:w-1/4 lg:w-1/6 h-screen">
-			<div className="flex items-center justify-center p-5">
+		<div>
+			<div>
 				<img style={{ width: '30px' }} src={Icon} alt="clock" />
-				<h1 className="font-black text-xl">Taskaholic</h1>
+				<h1>Taskaholic</h1>
 			</div>
-			<ul className="text-gray-600 text-lg font-light">
+			<ul>
 				{listData.map((el, i) => {
 					console.log();
 					return (
@@ -59,9 +59,7 @@ function Menu({ setView }) {
 							id={el}
 							className={active === i ? activeCl : listCl}
 							onClick={() => updateactive(i, el)}>
-							<span aria-labelledby={el} className="mr-2">
-								{listIcons[i]}
-							</span>
+							<span aria-labelledby={el}>{listIcons[i]}</span>
 							{el}
 						</li>
 					);

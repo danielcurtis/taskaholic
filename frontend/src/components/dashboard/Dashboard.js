@@ -2,7 +2,6 @@
 
 import React from 'react';
 import FooterBar from './children/FooterBar';
-import Graph from './children/Graph';
 import Habits from './children/Habits';
 import Header from './children/Header';
 import Tasks from './children/Tasks';
@@ -68,13 +67,12 @@ function Dashboard() {
 	];
 
 	return (
-		<div className="w-full sm:w-3/4 md:w-3/4 lg:w-5/6 bg-gray-100">
+		<div>
 			<Header />
-			<div className="flex">
+			<div>
 				<Tasks taskData={taskData} />
-				<section className="w-2/6 h-full">
+				<section>
 					<Timesheet />
-					<Graph />
 				</section>
 				<Habits />
 			</div>

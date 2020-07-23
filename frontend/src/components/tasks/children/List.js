@@ -17,12 +17,9 @@ function List({ setToggle, tasks, setCurrent }) {
 		return (
 			<div>
 				<h1>List</h1>
-				<ul className="w-4/5">
+				<ul>
 					{tasks.map((task) => (
-						<li
-							key={task.name}
-							className="flex justify-between"
-							onClick={() => handleTaskClick(task._id)}>
+						<li key={task.name} onClick={() => handleTaskClick(task._id)}>
 							<span>{task.name}</span>
 							<span>{task.due}</span>
 							<span>{task.status}</span>
@@ -30,11 +27,7 @@ function List({ setToggle, tasks, setCurrent }) {
 					))}
 				</ul>
 
-				<button
-					onClick={() => setToggle('Create')}
-					className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-					Create New Item
-				</button>
+				<button onClick={() => setToggle('Create')}>Create New Item</button>
 			</div>
 		);
 	}

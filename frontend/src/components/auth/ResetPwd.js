@@ -21,7 +21,7 @@ function ResetPwd({ setPwd }) {
 
 	return (
 		<div>
-			<label className="font-medium">Email:</label>
+			<label>Email:</label>
 			<input
 				className={inputClass}
 				type="email"
@@ -30,17 +30,9 @@ function ResetPwd({ setPwd }) {
 					setEmail(e.target.value);
 				}}
 			/>
-			<div className="flex justify-end mt-4">
-				<button
-					className="bg-owl-grn hover:bg-blue-700 text-white font-bold py-2 px-4 border border-owl-grn hover:border-transparent rounded-lg mr-2"
-					onClick={handleReset}>
-					Send Email
-				</button>
-				<button
-					className="bg-transparent hover:bg-blue-700 text-owl-grn font-bold hover:text-white py-2 px-4 border border-owl-grn hover:border-transparent rounded-lg"
-					onClick={() => setPwd(false)}>
-					Cancel
-				</button>
+			<div>
+				<button onClick={handleReset}>Send Email</button>
+				<button onClick={() => setPwd(false)}>Cancel</button>
 			</div>
 		</div>
 	);

@@ -15,12 +15,9 @@ function List({ setToggle, tags, setCurrent }) {
 			<div>
 				<h1>List</h1>
 
-				<ul className="w-2/5">
+				<ul>
 					{tags.map((tag) => (
-						<li
-							key={tag.name}
-							className="flex justify-between"
-							onClick={() => handleTagClick(tag.id)}>
+						<li key={tag.name} onClick={() => handleTagClick(tag.id)}>
 							<span>{tag.name}</span>
 							<span>{tag.due}</span>
 							<span>{tag.status}</span>
@@ -29,11 +26,7 @@ function List({ setToggle, tags, setCurrent }) {
 					))}
 				</ul>
 
-				<button
-					onClick={() => setToggle('Create')}
-					className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-					Create New Item
-				</button>
+				<button onClick={() => setToggle('Create')}>Create New Item</button>
 			</div>
 		);
 	}

@@ -52,9 +52,9 @@ function Graph() {
 	};
 
 	return (
-		<div className="shadow-lg mb-10 rounded-lg flex items-center bg-blue-800 pt-2">
-			<h2 className="mx-5 text-lg text-white">Scores by Day</h2>
-			<div className="flex items-end">
+		<div>
+			<h2>Scores by Day</h2>
+			<div>
 				{graphData.map((el, i) => {
 					return (
 						<div

@@ -37,10 +37,10 @@ function FooterBar({ taskData }) {
 	red *= width / tot;
 
 	return (
-		<div className="flex absolute bottom-0">
-			<div className="bg-owl-grn" style={{ width: grn, height: `20px` }}></div>
-			<div className="bg-owl-tan" style={{ width: ylw, height: `20px` }}></div>
-			<div className="bg-red-400" style={{ width: red, height: `20px` }}></div>
+		<div>
+			<div style={{ width: grn, height: `20px` }}></div>
+			<div style={{ width: ylw, height: `20px` }}></div>
+			<div style={{ width: red, height: `20px` }}></div>
 		</div>
 	);
 }

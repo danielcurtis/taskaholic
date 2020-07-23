@@ -7,7 +7,6 @@ _For local development, refer to the backend and frontend READMEs._
 ## Technologies
 
 - React
-- TailwindCSS
 - NodeJS
 - Express
 - MongoDB
@@ -32,7 +31,7 @@ _For local development, refer to the backend and frontend READMEs._
 
 ## Project Management
 
-Taskaholic uses the product itself, GitHub Projects, this README for an "agile-like" project management environment. 
+Taskaholic uses the product itself, GitHub Projects, this README for an "agile-like" project management environment.
 
 The following sprints are planned to get to v1.0:
 

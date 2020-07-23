@@ -18,16 +18,12 @@ function Signup({ toggle, setToggle }) {
 		setBtn('Loading...');
 		await signup(name, email, password);
 		setBtn('Log In');
-		setErr(
-			<p className="mt-2 text-red-500">
-				Please, fill out the fields correctly.
-			</p>
-		);
+		setErr(<p>Please, fill out the fields correctly.</p>);
 	};
 
 	return (
 		<div>
-			<label className="font-medium">Name:</label>
+			<label>Name:</label>
 			<input
 				className={inputClass}
 				type="text"
@@ -36,7 +32,7 @@ function Signup({ toggle, setToggle }) {
 					setName(e.target.value);
 				}}
 			/>
-			<label className="font-medium">Email:</label>
+			<label>Email:</label>
 			<input
 				className={inputClass}
 				type="email"
@@ -45,7 +41,7 @@ function Signup({ toggle, setToggle }) {
 					setEmail(e.target.value);
 				}}
 			/>
-			<label className="font-medium">Password:</label>
+			<label>Password:</label>
 			<input
 				className={inputClass}
 				type="password"
@@ -53,17 +49,9 @@ function Signup({ toggle, setToggle }) {
 					setPassword(e.target.value);
 				}}
 			/>
-			<div className="flex justify-end mt-4">
-				<button
-					className="bg-transparent hover:bg-blue-700 text-owl-grn font-bold hover:text-white py-2 px-4 border border-owl-grn hover:border-transparent rounded-lg mr-2"
-					onClick={() => setToggle(!toggle)}>
-					Log In
-				</button>
-				<button
-					className="bg-owl-grn hover:bg-blue-700 text-white font-bold py-2 px-4 border border-owl-grn hover:border-transparent rounded-lg"
-					onClick={handleSignup}>
-					{btn}
-				</button>
+			<div>
+				<button onClick={() => setToggle(!toggle)}>Log In</button>
+				<button onClick={handleSignup}>{btn}</button>
 			</div>
 			{err}
 		</div>

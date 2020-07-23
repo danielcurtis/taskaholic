@@ -22,19 +22,19 @@ function Tags() {
 
 	if (toggle === 'List') {
 		return (
-			<div className="w-full sm:w-3/4 md:w-3/4 lg:w-5/6">
+			<div>
 				<List setToggle={setToggle} tags={tags} setCurrent={setCurrent} />
 			</div>
 		);
 	} else if (toggle === 'Edit') {
 		return (
-			<div className="w-full sm:w-3/4 md:w-3/4 lg:w-5/6">
+			<div>
 				<Edit setToggle={setToggle} tags={tags} current={current} />
 			</div>
 		);
 	} else if (toggle === 'Create') {
 		return (
-			<div className="w-full sm:w-3/4 md:w-3/4 lg:w-5/6">
+			<div>
 				<Create setToggle={setToggle} />
 			</div>
 		);

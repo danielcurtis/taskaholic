@@ -22,19 +22,19 @@ function Tasks() {
 
 	if (toggle === 'List') {
 		return (
-			<div className="w-full sm:w-3/4 md:w-3/4 lg:w-5/6">
+			<div>
 				<List setToggle={setToggle} tasks={tasks} setCurrent={setCurrent} />
 			</div>
 		);
 	} else if (toggle === 'Edit') {
 		return (
-			<div className="w-full sm:w-3/4 md:w-3/4 lg:w-5/6">
+			<div>
 				<Edit setToggle={setToggle} tasks={tasks} current={current} />
 			</div>
 		);
 	} else if (toggle === 'Create') {
 		return (
-			<div className="w-full sm:w-3/4 md:w-3/4 lg:w-5/6">
+			<div>
 				<Create setToggle={setToggle} />
 			</div>
 		);

@@ -32,17 +32,16 @@ function Header() {
 	else greeting = 'Good evening,';
 
 	return (
-		<div className="flex mx-10 my-5">
-			<header className="flex w-full h-full justify-between mb-5">
+		<div>
+			<header>
 				<h1
-					className="text-3xl text-owl-grn"
 					style={{
 						fontFamily: `Shrikhand, cursive`,
 					}}>{`${greeting} ${name}`}</h1>
-				<div className="flex text-owl-grn">
-					<span className="self-center px-1">{months[date.getMonth()]}</span>
-					<span className="self-center px-1 text-4xl">{date.getDate()}</span>
-					<span className="self-center px-1">{date.getFullYear()}</span>
+				<div>
+					<span>{months[date.getMonth()]}</span>
+					<span>{date.getDate()}</span>
+					<span>{date.getFullYear()}</span>
 				</div>
 			</header>
 		</div>

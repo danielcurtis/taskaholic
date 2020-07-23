@@ -24,14 +24,12 @@ function Habits() {
 	];
 
 	return (
-		<section className="w-1/6 h-full flex flex-col items-center">
+		<section>
 			{habitData.map((el, i) => {
 				return (
-					<div
-						key={i}
-						className="rounded-full h-32 w-32 bg-indigo-700 text-center pb-5 pt-4 mb-10 text-owl-blu shadow-inner">
-						<h2 className="text-5xl">{el.days}</h2>
-						<h3 className="text-xs text-white">{el.name.toUpperCase()}</h3>
+					<div key={i}>
+						<h2>{el.days}</h2>
+						<h3>{el.name.toUpperCase()}</h3>
 					</div>
 				);
 			})}
