@@ -63,10 +63,10 @@ const csrfProtection = csrf({
 });
 app.use(csrfProtection);
 
-// Rate limiting (20 per minute)
+// Rate limiting (50 per minute)
 const limiter = rateLimit({
 	windowMs: 10 * 60 * 100,
-	max: 20,
+	max: 50,
 });
 app.use(limiter);
 
