@@ -25,7 +25,7 @@ function Home() {
 	return (
 		<div>
 			<Menu setView={setView} />
-			{component}
+			<main className="Main">{component}</main>
 		</div>
 	);
 }

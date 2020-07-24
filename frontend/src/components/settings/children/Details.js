@@ -24,8 +24,8 @@ function Details({ user }) {
 	};
 
 	return (
-		<div>
-			<h1>Update Details</h1>
+		<div className="Settings-details">
+			<h2>Update Details</h2>
 			<form onSubmit={handleSubmit}>
 				<label>Name:</label>
 				<input
@@ -48,7 +48,7 @@ function Details({ user }) {
 					}}
 				/>
 
-				<input type="submit" value="Submit" />
+				<button type="submit">Update</button>
 			</form>
 
 			<p>{msg}</p>

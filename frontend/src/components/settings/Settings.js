@@ -24,7 +24,7 @@ function Settings() {
 	console.log(user);
 
 	return (
-		<div>
+		<div className="Settings">
 			<h1>Settings</h1>
 			<button onClick={logout}>Log out</button>
 			{loading ? null : (

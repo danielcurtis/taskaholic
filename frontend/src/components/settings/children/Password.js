@@ -26,12 +26,13 @@ function Password({ user }) {
 	};
 
 	return (
-		<div>
-			<h1>Update Password</h1>
+		<div className="Settings-password">
+			<h2>Update Password</h2>
 			<form onSubmit={handleSubmit}>
 				<label>Old Password:</label>
 				<input
 					type="password"
+					minLength={8}
 					value={current}
 					onChange={(e) => {
 						setCurrent(e.target.value);
@@ -41,13 +42,14 @@ function Password({ user }) {
 				<label>New Password:</label>
 				<input
 					type="password"
+					minLength={8}
 					value={pwd}
 					onChange={(e) => {
 						setPwd(e.target.value);
 					}}
 				/>
 
-				<input type="submit" value="Submit" />
+				<button type="submit">Update</button>
 			</form>
 
 			<p>{msg}</p>

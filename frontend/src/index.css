@@ -1,0 +1,168 @@
+/* Global Styles */
+/* Variables */
+:root {
+	--main-blue: #007aff;
+	--secondary-blue: #6594d7;
+	--gradient-blue: linear-gradient(
+		309deg,
+		rgba(63, 0, 255, 1) 0%,
+		rgba(148, 187, 233, 1) 100%
+	);
+	--main-red: #ec1416;
+	--secondary-red: #b0172b;
+	--main-black: #080a0a;
+	--secondary-black: #280c34;
+	--main-grey: #36456b;
+	--secondary-grey: #c3c7d3;
+	--main-white: #fbfbfd;
+	--secondary-white: #f0f0f2;
+	--gradient-white: linear-gradient(
+		135deg,
+		rgba(240, 240, 242, 1) 0%,
+		rgba(231, 231, 231, 1) 100%
+	);
+}
+
+html,
+body {
+	font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto,
+		'Helvetica Neue', Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+}
+
+input {
+	font-size: 16px;
+	padding: 8px 12px;
+	border-radius: 10px;
+	border: 1px solid var(--secondary-grey);
+}
+
+input:focus {
+	border-radius: 10px;
+	border: 1.5px solid var(--main-blue);
+	background-color: white;
+	outline: none;
+}
+
+button {
+	cursor: pointer;
+	background: var(--main-white);
+	border: none;
+	padding: 6px 16px;
+	border-radius: 5px;
+	color: var(--main-black);
+	box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+	font-size: 14px;
+}
+
+/* Pages */
+/* Home */
+.Main {
+	margin-left: 300px;
+	padding: 25px;
+}
+
+/* Components */
+/* Menu */
+.Menu {
+	margin: 0;
+	padding: 10px 25px;
+	width: 200px;
+	position: fixed;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: var(--main-white);
+}
+
+.Menu > ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.Menu-brand {
+	display: flex;
+	align-items: center;
+}
+
+.Menu-brand > img {
+	width: 30px;
+	height: 27px;
+}
+
+.Menu-brand > h1 {
+	font-size: 20px;
+	font-weight: 900;
+}
+
+.Menu-item {
+	padding: 10px 100px 10px 16px;
+	display: flex;
+	justify-content: left;
+}
+
+.Menu-item-active {
+	padding: 10px 100px 10px 16px;
+	display: flex;
+	border-radius: 8px;
+	background: var(--gradient-white);
+}
+
+.Menu-item > span,
+.Menu-item-active > span {
+	padding: 1px 4px 0px 0px;
+	color: var(--main-blue);
+}
+
+/* Settings */
+.Settings-password,
+.Settings-details {
+	margin: 40px 0;
+	padding: 30px 40px;
+	border-radius: 30px;
+	background: var(--main-white);
+	max-width: 300px;
+}
+
+.Settings-password > h2,
+.Settings-details > h2 {
+	margin: 5px 0;
+}
+
+.Settings-password > form,
+.Settings-details > form {
+	display: flex;
+	flex-direction: column;
+	max-width: 280px;
+}
+
+.Settings-password > form > label,
+.Settings-details > form > label {
+	padding: 12px 0 8px 0;
+}
+
+.Settings-password > form > button,
+.Settings-details > form > button {
+	margin-top: 12px;
+	max-width: 80px;
+}
+
+/* Media Queries */
+@media screen and (max-width: 700px) {
+	.Menu {
+		width: 100%;
+		height: auto;
+		position: relative;
+		display: flex;
+		flex-direction: row;
+	}
+	.Main {
+		margin-left: 0;
+	}
+}
+
+@media screen and (max-width: 400px) {
+}
