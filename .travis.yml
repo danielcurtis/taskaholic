@@ -9,12 +9,12 @@ script:
   - docker run curtiscodes/frontend-test npm test -- --coverage
 
 after_success:
-  - docker build -t curtiscodes/multi-frontend ./frontend
-  - docker build -t curtiscodes/multi-nginx ./nginx
-  - docker build -t curtiscodes/multi-backend ./backend
+  - docker build -t curtiscodes/frontend ./frontend
+  - docker build -t curtiscodes/nginx ./nginx
+  - docker build -t curtiscodes/backend ./backend
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
-  - docker push curtiscodes/multi-frontend
-  - docker push curtiscodes/multi-nginx
-  - docker push curtiscodes/multi-backend
+  - docker push curtiscodes/frontend
+  - docker push curtiscodes/nginx
+  - docker push curtiscodes/backend
