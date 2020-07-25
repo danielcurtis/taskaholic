@@ -20,7 +20,7 @@ const UserProvider = ({ children }) => {
 				data: data.data,
 			});
 		} catch (err) {
-			console.log('Please log in or sign up to access Taskaholic!');
+			console.log('Log in or sign up!');
 		}
 	};
 
@@ -44,7 +44,7 @@ const UserProvider = ({ children }) => {
 				auth: false,
 				data: {},
 			});
-			console.log(`Log in error in user context ${err}`);
+			console.log(`Log in error: ${err}`);
 		}
 
 		getMe();
@@ -59,7 +59,7 @@ const UserProvider = ({ children }) => {
 				data: {},
 			});
 		} catch (err) {
-			console.log(`Log out error in user context ${logout}`);
+			console.log(`Log out error: ${err}`);
 		}
 	};
 
@@ -76,7 +76,7 @@ const UserProvider = ({ children }) => {
 				data: {},
 			});
 		} catch (err) {
-			console.log(`Sign up error in user context: ${err}`);
+			console.log(`Sign up error: ${err}`);
 		}
 
 		getMe();

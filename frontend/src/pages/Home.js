@@ -23,9 +23,9 @@ function Home() {
 	else if (view === 'Timesheet') component = <Timesheet />;
 
 	return (
-		<div className="flex flex-wrap">
+		<div>
 			<Menu setView={setView} />
-			{component}
+			<main className="Main">{component}</main>
 		</div>
 	);
 }

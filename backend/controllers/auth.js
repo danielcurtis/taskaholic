@@ -167,6 +167,13 @@ exports.resetPassword = asyncHandler(async (req, res, next) => {
 	sendTokenResponse(user, 200, res);
 });
 
+// @desc		Get CRSF Token
+// @route 	GET /api/v1/auth/csrf-token
+// @method  Public
+exports.crsf = asyncHandler(async (req, res, next) => {
+	res.json({ csrfToken: req.csrfToken() });
+});
+
 // Helper function
 // Get token from model; create cookie and send response
 const sendTokenResponse = (user, statusCode, res) => {

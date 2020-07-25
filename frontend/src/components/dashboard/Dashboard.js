@@ -1,84 +1,58 @@
 // @ts-check
 
-import React from 'react';
-import FooterBar from './children/FooterBar';
-import Graph from './children/Graph';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import Meter from './children/Meter';
 import Habits from './children/Habits';
 import Header from './children/Header';
 import Tasks from './children/Tasks';
-import Timesheet from './children/Timesheet';
+import Timelog from './children/Timelog';
 
 function Dashboard() {
-	// Placeholder data
-	const taskData = [
-		{
-			name: 'Complete biology lab report',
-			epic: 'SCH-01',
-			type: 'progress',
-			due: '05/11/20',
-		},
-		{
-			name: 'Take the Rufus to the vet',
-			epic: 'HME-05	',
-			type: 'progress',
-			due: '05/05/20',
-		},
-		{
-			name: 'Build a cool web app',
-			epic: 'PJT-24',
-			type: 'progress',
-			due: '05/20/20',
-		},
-		{
-			name: 'Midterm exam',
-			epic: 'SCH-08',
-			type: 'todo',
-			due: '05/30/20',
-		},
-		{
-			name: 'Buy a new dishwasher',
-			epic: 'HME-01	',
-			type: 'todo',
-			due: '05/05/20',
-		},
-		{
-			name: "Mulch grandma's flower bed",
-			epic: 'HME-04',
-			type: 'todo',
-			due: '05/25/20',
-		},
-		{
-			name: 'Office hours with Dr. Angela',
-			epic: 'SCH-02',
-			type: 'paused',
-			due: '05/15/20',
-		},
-		{
-			name: 'Play date with Rufus',
-			epic: 'HME-04	',
-			type: 'paused',
-			due: '05/10/20',
-		},
-		{
-			name: 'Study with Levonne',
-			epic: 'SCH-01',
-			type: 'completed',
-			due: '05/01/20',
-		},
-	];
+	const [loading, setLoading] = useState(true);
+	const [rawTasks, setTasks] = useState([]);
+	const [habits, setHabits] = useState([]);
+
+	useEffect(() => {
+		const getData = async () => {
+			const _tasks = await axios.get('/api/v1/tasks/');
+			const _habits = await axios.get('/api/v1/habits/');
+
+			setTasks(_tasks.data.data);
+			setHabits(_habits.data.data);
+			setLoading(false);
+		};
+		getData();
+	}, []);
+
+	let sunday = 0;
+	let monday = 0;
+	let date = new Date();
+	let day = date.getDay() || 7;
+	if (day !== 1) sunday = new Date(date.setHours(-24 * (day - 0))).getTime();
+	if (day !== 7) monday = new Date(date.setHours(-24 * (day - 13))).getTime();
+
+	let tasks = rawTasks.filter((el) => new Date(el.due).getTime() > sunday);
+	tasks = tasks.filter((el) => new Date(el.due).getTime() < monday);
 
 	return (
-		<div className="w-full sm:w-3/4 md:w-3/4 lg:w-5/6 bg-gray-100">
+		<div>
 			<Header />
-			<div className="flex">
-				<Tasks taskData={taskData} />
-				<section className="w-2/6 h-full">
-					<Timesheet />
-					<Graph />
-				</section>
-				<Habits />
+			<div className="Dashboard">
+				<h1>Tasks This Week</h1>
+				{loading ? <div>Loading...</div> : <Tasks tasks={tasks} />}
+				{loading ? null : <Meter tasks={tasks} />}
+				<div>
+					<div style={{ width: '600px' }}>
+						<h1>Top Habits</h1>
+						{loading ? <div></div> : <Habits habits={habits} />}
+					</div>
+					<div>
+						<h1>Timesheet</h1>
+						{loading ? <div></div> : <Timelog tasks={tasks} />}
+					</div>
+				</div>
 			</div>
-			<FooterBar taskData={taskData} />
 		</div>
 	);
 }
