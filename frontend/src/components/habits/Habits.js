@@ -2,65 +2,68 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Create from './children/Create';
 
 function Habits() {
 	const [habits, setHabits] = useState([]);
-	const [name, setName] = useState('');
 	const [err, setErr] = useState('');
+	const [loading, setLoading] = useState(false);
 
 	useEffect(() => {
 		const getHabits = async () => {
 			const { data } = await axios.get('/api/v1/habits/');
 			setHabits(data.data);
 		};
-
 		getHabits();
-	}, []);
+	}, [loading]);
 
-	const handleSubmit = async (e) => {
-		e.preventDefault();
+	const handleDelete = async (id) => {
+		setLoading(true);
+		await axios.delete(`/api/v1/habits/${id}`);
+		setLoading(false);
+	};
 
-		try {
-			await axios.post(`/api/v1/habits/`, {
-				name: name,
-				streak: 0,
-			});
-		} catch (error) {
-			console.log(`Create task error: ${error.message}`);
-			setErr('Uh oh... please check your Internet and try again.');
-		}
+	const handleStreak = async (arr) => {
+		setLoading(true);
+		await axios.put(`/api/v1/habits/${arr[0]}`, {
+			streak: arr[1] + arr[2],
+		});
+		setLoading(false);
 	};
 
 	return (
 		<div>
 			{habits.map((el, i) => {
 				return (
-					<div>
+					<div key={el.name}>
 						<p>
 							{el.name} | {el.streak}
 						</p>
-						<button>Increase</button>
-						<button>Delete</button>
-						<button>Decrease</button>
+						<button
+							onClick={async () => {
+								await handleStreak([el._id, el.streak, 1]);
+							}}>
+							Increase
+						</button>
+						<button
+							onClick={async () => {
+								await handleDelete(el._id);
+							}}>
+							Delete
+						</button>
+						<button
+							onClick={async () => {
+								await handleStreak([el._id, el.streak, -1]);
+							}}>
+							Decrease
+						</button>
 					</div>
 				);
 			})}
 
-			<br />
+			<Create setErr={setErr} setLoading={setLoading} />
 
-			<form onSubmit={handleSubmit}>
-				<label>Add habit</label>
-				<input
-					type="text"
-					minLength={1}
-					required={true}
-					value={name}
-					onChange={(e) => setName(e.target.value)}
-				/>
-				<input type="submit" value="Submit"></input>
-			</form>
-
-			<p>{err}</p>
+			<p style={{ color: '#ec1416' }}>{err}</p>
 		</div>
 	);
 }
