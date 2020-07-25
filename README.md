@@ -2,7 +2,50 @@
 
 A to-do web app with categories and time-tracking built in for task oriented individuals.
 
-_For local development, refer to the backend and frontend READMEs._
+_For local development, refer to the backend and frontend READMEs. **Not applicable to k8s!**_
+
+## Local Development
+
+**_Add with docs update._**
+
+#### K8s Secrets
+
+**Secret Type**
+
+- generic: key value
+- docker registry: private registry (not used)
+- tls: https
+
+**Secret Name**
+
+Add the following generic secret key value pairs.
+
+The initial name is the key. The commented name is the secret name.
+
+```yaml
+# MongoDB
+MONGO_INITDB_ROOT_USERNAME # mongouser
+MONGO_INITDB_ROOT_PASSWORD # mongopassword
+# JWT
+JWT_SECRET # jwtsecret
+# Email Service
+SMTP_HOST
+SMTP_PORT
+SMTP_EMAIL
+SMTP_PASSWORD
+```
+
+MONGO_INITDB_ROOT_PASSWORD
+
+```bash
+kubectl create secret <secret type> <secret name> --from-literal <key=value>
+```
+
+Example (note, hash is not real):
+
+```bash
+kubectl create secret generic jwtsecret --from-literal JWT_SECRET=somehashvaluef80h103fuu
+```
 
 ## Technologies
 
