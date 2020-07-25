@@ -11,12 +11,12 @@ script:
   - docker run -e CI=true curtiscodes/frontend-test npm run test
 
 after_success:
-  - docker build -t curtiscodes/frontend ./frontend
-  - docker build -t curtiscodes/nginx ./nginx
-  - docker build -t curtiscodes/backend ./backend
+  - docker build -t curtiscodes/taskaholic-frontend ./frontend
+  - docker build -t curtiscodes/taskaholic-nginx ./nginx
+  - docker build -t curtiscodes/taskaholic-backend ./backend
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
-  - docker push curtiscodes/frontend
-  - docker push curtiscodes/nginx
-  - docker push curtiscodes/backend
+  - docker push curtiscodes/taskaholic-frontend
+  - docker push curtiscodes/taskaholic-nginx
+  - docker push curtiscodes/taskaholic-backend
