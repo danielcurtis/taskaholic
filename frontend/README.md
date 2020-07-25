@@ -12,7 +12,7 @@ User interface built with React and vanilla CSS.
 1. Clone the entire monorepo: `git clone https://github.com/danielcurtis/taskaholic.git`
 2. Change to the frontend directory: `cd frontend`
 3. Install dependancies: `npm install`
-4. Run the app at localhost:3000: `npm run dev`
+4. Run the app at localhost:3000: `npm run start`
 5. Build the app `npm run build`
 6. Test the app `npm run test`
 7. _For app to fully function, follow backend local dev instructions._
