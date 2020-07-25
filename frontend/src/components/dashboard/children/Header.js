@@ -32,19 +32,23 @@ function Header() {
 	else greeting = 'Good evening,';
 
 	return (
-		<div>
-			<header>
+		<header className="Dashboard-header">
+			<h1
+				style={{
+					fontFamily: `Shrikhand, cursive`,
+				}}>{`${greeting} ${name}`}</h1>
+			<div style={{ display: 'flex', alignItems: 'center' }}>
+				<span>{months[date.getMonth()]}</span>
 				<h1
 					style={{
 						fontFamily: `Shrikhand, cursive`,
-					}}>{`${greeting} ${name}`}</h1>
-				<div>
-					<span>{months[date.getMonth()]}</span>
-					<span>{date.getDate()}</span>
-					<span>{date.getFullYear()}</span>
-				</div>
-			</header>
-		</div>
+						margin: 'auto 10px',
+					}}>
+					{date.getDate()}
+				</h1>
+				<span>{date.getFullYear()}</span>
+			</div>
+		</header>
 	);
 }
 

@@ -3,13 +3,10 @@
 :root {
 	--main-blue: #007aff;
 	--secondary-blue: #6594d7;
-	--gradient-blue: linear-gradient(
-		309deg,
-		rgba(63, 0, 255, 1) 0%,
-		rgba(148, 187, 233, 1) 100%
-	);
+	--gradient-blue: linear-gradient(309deg, #0011ff 0%, rgb(20, 129, 255) 100%);
 	--main-red: #ec1416;
 	--secondary-red: #b0172b;
+	--main-green: #58d188;
 	--main-black: #080a0a;
 	--secondary-black: #280c34;
 	--main-grey: #36456b;
@@ -21,6 +18,21 @@
 		rgba(240, 240, 242, 1) 0%,
 		rgba(231, 231, 231, 1) 100%
 	);
+	--gradient-sunset: linear-gradient(
+		339deg,
+		rgba(236, 20, 22, 0.7) 0%,
+		rgba(0, 60, 255, 0.7) 100%
+	);
+	--box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+.red {
+	color: #ec1416;
+}
+.green {
+	color: #58d188;
+}
+.blue {
+	color: #007aff;
 }
 
 html,
@@ -52,18 +64,229 @@ button {
 	padding: 6px 16px;
 	border-radius: 5px;
 	color: var(--main-black);
-	box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+	box-shadow: var(--box-shadow);
 	font-size: 14px;
+}
+
+.blue-btn {
+	background: var(--main-blue);
+	color: white;
+}
+
+a {
+	color: var(--main-blue);
 }
 
 /* Pages */
 /* Home */
 .Main {
 	margin-left: 300px;
-	padding: 25px;
+	padding: 25px 75px 25px 25px;
+	max-width: 1300px;
+}
+
+/* Landing */
+.Landing {
+	width: 100vw;
+	height: 100vh;
+	background-image: url('./assets/landing.svg');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	text-align: center;
+}
+
+.Landing-box {
+	position: absolute;
+	top: 50%;
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+	max-width: 300px;
+	display: flex;
+	flex-direction: column;
+	text-align: left;
+	color: var(--main-white);
+	padding: 30px 30px 50px 30px;
+	border-radius: 30px;
+	background: var(--gradient-sunset);
+	backdrop-filter: blur(5px);
+	margin-left: 5vw;
+}
+
+.Landing-brand {
+	display: flex;
+	align-items: center;
+}
+
+.Landing-brand > img {
+	width: 30px;
+	height: 30px;
+	margin-right: 10px;
+}
+
+.Landing-brand > h1 {
+	margin: 0;
+	font-weight: 900;
 }
 
 /* Components */
+/* Auth */
+.Auth-form {
+	display: flex;
+	flex-direction: column;
+}
+
+.Auth-form-btn {
+	margin-left: 5px;
+	background-color: var(--main-blue);
+	color: white;
+}
+
+.Auth-form-link {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.Auth-form > label {
+	padding: 8px 0 5px 0;
+}
+
+.Auth-form > input {
+	border: 1px solid white;
+}
+
+.Auth-form > input:focus {
+	border: 1.5px solid var(--main-blue);
+}
+
+.Auth-form > div {
+	text-align: right;
+	padding-top: 12px;
+}
+
+.Auth-form > p {
+	margin-bottom: 0;
+}
+
+/* Dashboard */
+.Dashboard > div {
+	display: flex;
+	margin-top: 60px;
+}
+
+.Dashboard-tasks {
+	display: flex;
+	overflow-y: scroll;
+	border-radius: 40px;
+}
+
+.Dashboard-tasks-map {
+	flex: 0 0 320px;
+	padding: 30px;
+	margin-right: 30px;
+	border-radius: 40px;
+	background: linear-gradient(
+		339deg,
+		rgba(246, 248, 253, 1) 0%,
+		rgba(251, 251, 253, 1) 100%
+	);
+}
+
+.Dashboard-tasks-map > h2 {
+	margin-top: 0;
+}
+
+.Dashboard-tasks-map-group {
+	box-shadow: var(--box-shadow);
+	background-color: var(--main-white);
+	padding: 10px 14px;
+	border-radius: 8px;
+	margin-bottom: 10px;
+}
+
+.Dashboard-tasks-map-group > div {
+	display: flex;
+}
+
+.Dashboard-tasks-map-group > div > div {
+	background: var(--gradient-sunset);
+	padding: 3px 6px;
+	color: white;
+	margin: 6px 4px 0 0px;
+	border-radius: 3px;
+	font-size: small;
+	font-weight: bold;
+	box-shadow: var(--box-shadow);
+}
+
+.Dashboard-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.Dashboard-habits {
+	display: flex;
+	overflow-y: scroll;
+}
+
+.Dashboard-habits > div {
+	flex: 0 0 150px;
+	height: 150px;
+	text-align: center;
+	border-radius: 100%;
+	background: var(--gradient-blue);
+	margin-right: 30px;
+	box-shadow: var(--box-shadow);
+}
+
+.Dashboard-habits > div > h2 {
+	color: white;
+	margin: 25px 0 0 0;
+	padding: 0;
+	top: 50%;
+	font-size: 60px;
+}
+
+.Dashboard-habits > div > h3 {
+	color: white;
+	margin: 0 0 0 0;
+	padding: 0;
+	font-size: smaller;
+}
+
+.Dashboard-timelog {
+	overflow-y: scroll;
+}
+
+.Dashboard-timelog > table {
+	border-collapse: collapse;
+	background: var(--secondary-white);
+	border-radius: 15px;
+}
+
+.Dashboard-timelog > table > thead > tr {
+	height: 40px;
+	text-align: left;
+}
+
+.Dashboard-timelog > table > tbody > tr > td {
+	padding: 10px;
+}
+
+.Dashboard-timelog > table > thead > tr > th {
+	padding: 10px;
+	font-weight: lighter;
+	border-bottom: 3px solid var(--main-blue);
+}
+
+.Dashboard-timelog-time {
+	background: var(--main-blue);
+	color: white;
+	border-radius: 100%;
+	text-align: center;
+}
+
 /* Menu */
 .Menu {
 	margin: 0;
@@ -118,6 +341,10 @@ button {
 }
 
 /* Settings */
+.Settings > a {
+	margin-left: 10px;
+}
+
 .Settings-password,
 .Settings-details {
 	margin: 40px 0;
@@ -161,8 +388,12 @@ button {
 	}
 	.Main {
 		margin-left: 0;
+		padding: 25px;
 	}
 }
 
 @media screen and (max-width: 400px) {
+	.Landing-box {
+		margin-left: 0;
+	}
 }

@@ -11,7 +11,7 @@ import Timesheet from '../components/timesheet/Timesheet';
 
 function Home() {
 	// Init view & component
-	const [view, setView] = useState('Habits');
+	const [view, setView] = useState('Dashboard');
 	let component = <Dashboard />;
 
 	// Set view, similar to React Router
