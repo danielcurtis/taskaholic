@@ -21,18 +21,33 @@ function Settings() {
 		getMe();
 	}, []);
 
-	console.log(user);
-
 	return (
 		<div className="Settings">
 			<h1>Settings</h1>
-			<button onClick={logout}>Log out</button>
+			<p>
+				As a Beta user, you drive the Taskaholic product. Contact us for support
+				or suggestions.
+			</p>
+			<button className="blue-btn" onClick={logout}>
+				Log out
+			</button>
+			<a href="mailto:support@taskaholic.com">
+				<button>Email Us</button>
+			</a>
 			{loading ? null : (
 				<div>
 					<Password user={user} />
 					<Details user={user} />
 				</div>
 			)}
+			<p>
+				<a
+					href="https://docs.google.com/document/d/1h6rzrxmi0X2RLjMRX1IEB1U0orxDM7u8tvg86InHD1k/edit?usp=sharing"
+					target="_blank"
+					rel="noopener noreferrer">
+					Terms of Service & Privacy Policy
+				</a>
+			</p>
 		</div>
 	);
 }

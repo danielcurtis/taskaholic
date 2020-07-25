@@ -20,8 +20,7 @@ function Edit({ setToggle, tasks, current }) {
 
 		try {
 			let arr = [...time];
-			arr = arr.filter((el) => el[1] !== 0);
-			console.log(arr);
+			arr = arr.filter((el) => el[1] != 0);
 
 			await axios.put(`/api/v1/tasks/${current}`, {
 				name: name,
@@ -33,7 +32,7 @@ function Edit({ setToggle, tasks, current }) {
 			setToggle('List');
 		} catch (error) {
 			console.log(`Edit task error: ${error.message}`);
-			setErr('Uh oh... please check your Internet and try again.');
+			setErr('Uh oh. Check your Internet and refresh.');
 		}
 	};
 
@@ -44,8 +43,8 @@ function Edit({ setToggle, tasks, current }) {
 			await axios.delete(`/api/v1/tasks/${current}`);
 			setToggle('List');
 		} catch (error) {
-			console.log(`Edit task error: ${error.message}`);
-			setErr('Uh oh... please check your Internet and try again.');
+			console.log(`Delete task error: ${error.message}`);
+			setErr('Uh oh. Check your Internet and refresh.');
 		}
 	};
 
@@ -64,7 +63,17 @@ function Edit({ setToggle, tasks, current }) {
 	const handleDateChange = (date, i) => {
 		let arr = [...time];
 		arr[i] = [date, arr[i][1]];
-		setTime(arr);
+
+		for (let i = 0; i < arr.length - 1; i++) {
+			let oldDate = new Date(arr[i][0]).toDateString();
+			let newDate = new Date(date).toDateString();
+
+			if (oldDate === newDate) {
+				return setErr('Enter a unique date or edit old entry.');
+			}
+		}
+
+		return setTime(arr);
 	};
 
 	return (
@@ -118,7 +127,7 @@ function Edit({ setToggle, tasks, current }) {
 
 			<button onClick={handleDelete}>Delete</button>
 
-			<p>{err}</p>
+			<p style={{ color: '#ec1416' }}>{err}</p>
 		</div>
 	);
 }

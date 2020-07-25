@@ -4,12 +4,9 @@ import React from 'react';
 
 function List({ setToggle, tasks, setCurrent }) {
 	const handleTaskClick = (id) => {
-		console.log('list id', id);
 		setCurrent(id);
 		setToggle('Edit');
 	};
-
-	console.log('list', tasks);
 
 	if (tasks === undefined) {
 		return <div>Loading...</div>;

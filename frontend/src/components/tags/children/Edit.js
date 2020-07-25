@@ -38,7 +38,7 @@ function Edit({ setToggle, tags, current }) {
 			await axios.delete(`/api/v1/tags/${current}`);
 			setToggle('List');
 		} catch (error) {
-			console.log(`Edit tag error: ${error.message}`);
+			console.log(`Delete tag error: ${error.message}`);
 			setErr('Uh oh... please check your Internet and try again.');
 		}
 	};

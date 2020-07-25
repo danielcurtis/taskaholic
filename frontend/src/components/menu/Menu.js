@@ -39,14 +39,11 @@ function Menu({ setView }) {
 		setActive(i);
 	};
 
-	console.log(active);
-
 	return (
 		<div className="Menu">
 			<Brand />
 			<ul>
 				{listData.map((el, i) => {
-					console.log();
 					return (
 						<li
 							key={i}

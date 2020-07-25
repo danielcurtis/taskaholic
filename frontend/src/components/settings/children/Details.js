@@ -6,7 +6,7 @@ import axios from 'axios';
 function Details({ user }) {
 	const [email, setEmail] = useState(user.email);
 	const [name, setName] = useState(user.name);
-	const [msg, setMsg] = useState('');
+	const [msg, setMsg] = useState(<p></p>);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -16,10 +16,14 @@ function Details({ user }) {
 				email: email,
 				name: name,
 			});
-			setMsg('Details updated!');
+			setMsg(<p style={{ color: '#007aff' }}>Details updated!</p>);
 		} catch (error) {
-			console.log(`Create task error: ${error.message}`);
-			setMsg('Uh oh... please check your Internet and try again.');
+			console.log(`Update details error: ${error.message}`);
+			setMsg(
+				<p style={{ color: '#ec1416' }}>
+					Uh oh. Check your connection and refresh.
+				</p>
+			);
 		}
 	};
 
@@ -48,10 +52,12 @@ function Details({ user }) {
 					}}
 				/>
 
-				<button type="submit">Update</button>
+				<button className="blue-btn" type="submit">
+					Update
+				</button>
 			</form>
 
-			<p>{msg}</p>
+			{msg}
 		</div>
 	);
 }
