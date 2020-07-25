@@ -6,7 +6,7 @@ import axios from 'axios';
 function Password({ user }) {
 	const [current, setCurrent] = useState('');
 	const [pwd, setPwd] = useState('');
-	const [msg, setMsg] = useState('');
+	const [msg, setMsg] = useState(<p></p>);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -18,10 +18,14 @@ function Password({ user }) {
 			});
 			setPwd('');
 			setCurrent('');
-			setMsg('Password updated!');
+			setMsg(<p style={{ color: '#007aff' }}>Password updated!</p>);
 		} catch (error) {
-			console.log(`Create task error: ${error.message}`);
-			setMsg('Uh oh... please check your Internet and try again.');
+			console.log(`Update password error: ${error.message}`);
+			setMsg(
+				<p style={{ color: '#ec1416' }}>
+					Uh oh. Check your connection and refresh.
+				</p>
+			);
 		}
 	};
 
@@ -49,10 +53,12 @@ function Password({ user }) {
 					}}
 				/>
 
-				<button type="submit">Update</button>
+				<button className="blue-btn" type="submit">
+					Update
+				</button>
 			</form>
 
-			<p>{msg}</p>
+			{msg}
 		</div>
 	);
 }
