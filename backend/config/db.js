@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 
 const connectDB = async () => {
 	const conn = await mongoose.connect(
-		`mongodb://${process.env.MONGO_INITDB_ROOT_USERNAME}:${process.env.MONGO_INITDB_ROOT_PASSWORD}@mongo-cluster-ip-service:27017/${process.env.MONGO_INITDB_DATABASE}`,
+		`mongodb+srv://${process.env.MONGO_INITDB_ROOT_USERNAME}:${process.env.MONGO_INITDB_ROOT_PASSWORD}@cluster0-2rhro.mongodb.net/${process.env.MONGO_INITDB_DATABASE}?retryWrites=true&w=majority`,
 		{
 			useNewUrlParser: true,
 			useCreateIndex: true,
