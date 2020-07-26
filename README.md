@@ -2,8 +2,6 @@
 
 A to-do web app with categories and time-tracking built in for task oriented individuals.
 
-_For local development, refer to the backend and frontend READMEs. **Not applicable to k8s!**_
-
 ## Local Development
 
 **_Add with docs update._**
