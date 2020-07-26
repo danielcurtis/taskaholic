@@ -1,5 +1,4 @@
 // @ts-check
-'use strict';
 
 import React, { useState, useContext } from 'react';
 import { UserContext } from '../../context/User';
@@ -10,63 +9,61 @@ function Signup({ toggle, setToggle }) {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [btn, setBtn] = useState('Sign Up');
-	const [err, setErr] = useState(null);
-
-	const inputClass =
-		'bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal mb-2 mt-1';
+	const [msg, setMsg] = useState(
+		<p>
+			By signing up, you agree to{' '}
+			<a
+				href="https://docs.google.com/document/d/1h6rzrxmi0X2RLjMRX1IEB1U0orxDM7u8tvg86InHD1k/edit?usp=sharing"
+				target="_blank"
+				rel="noopener noreferrer">
+				Taskaholic's Beta terms of service.
+			</a>
+		</p>
+	);
 
 	const handleSignup = async () => {
 		setBtn('Loading...');
 		await signup(name, email, password);
-		setBtn('Log In');
-		setErr(
-			<p className="mt-2 text-red-500">
-				Please, fill out the fields correctly.
-			</p>
-		);
+		setBtn('Sign Up');
+		setMsg(<p>Please, fill out the fields correctly.</p>);
 	};
 
 	return (
-		<div>
-			<label className="font-medium">Name:</label>
+		<div className="Auth-form">
+			<label>Name:</label>
 			<input
-				className={inputClass}
 				type="text"
+				required={true}
 				placeholder="Jane Doe"
 				onChange={(e) => {
 					setName(e.target.value);
 				}}
 			/>
-			<label className="font-medium">Email:</label>
+			<label>Email:</label>
 			<input
-				className={inputClass}
 				type="email"
+				required={true}
 				placeholder="jane@example.com"
 				onChange={(e) => {
 					setEmail(e.target.value);
 				}}
 			/>
-			<label className="font-medium">Password:</label>
+			<label>Password:</label>
 			<input
-				className={inputClass}
 				type="password"
+				required={true}
+				minLength={8}
 				onChange={(e) => {
 					setPassword(e.target.value);
 				}}
 			/>
-			<div className="flex justify-end mt-4">
-				<button
-					className="bg-transparent hover:bg-blue-700 text-owl-grn font-bold hover:text-white py-2 px-4 border border-owl-grn hover:border-transparent rounded-lg mr-2"
-					onClick={() => setToggle(!toggle)}>
-					Log In
-				</button>
-				<button
-					className="bg-owl-grn hover:bg-blue-700 text-white font-bold py-2 px-4 border border-owl-grn hover:border-transparent rounded-lg"
-					onClick={handleSignup}>
+			<div>
+				<button onClick={() => setToggle(!toggle)}>Cancel</button>
+				<button className="Auth-form-btn" onClick={handleSignup}>
 					{btn}
 				</button>
 			</div>
-			{err}
+			{msg}
 		</div>
 	);
 }

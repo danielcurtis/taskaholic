@@ -1,5 +1,4 @@
 // @ts-check
-'use strict';
 
 import React, { useState } from 'react';
 import Dashboard from '../components/dashboard/Dashboard';
@@ -24,9 +23,9 @@ function Home() {
 	else if (view === 'Timesheet') component = <Timesheet />;
 
 	return (
-		<div className="flex flex-wrap">
+		<div>
 			<Menu setView={setView} />
-			{component}
+			<main className="Main">{component}</main>
 		</div>
 	);
 }

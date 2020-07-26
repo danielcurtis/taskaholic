@@ -1,6 +1,6 @@
 # Taskaholic Frontend
 
-User interface built with React and TailwindCSS.
+User interface built with React and vanilla CSS.
 
 ## Prerequisites
 
@@ -28,9 +28,7 @@ The frontend is laid out in four main folders:
 3. Context - context states for app such as user authentication
 4. Pages - main pages for app such as home or landing
 
-Currently, TailwindCSS is used but this may change in future versions because of the overhead.
-
-TailwindCSS is configured in `frontend/tailwind.config.js`
+**_Update for styles on docs update._**
 
 #### Coding Conventions
 
