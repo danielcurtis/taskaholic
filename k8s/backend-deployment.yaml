@@ -22,10 +22,11 @@ spec:
             - name: NODE_ENV
               value: development
             # MongoDB
-            - name: MONGO_URI
-              value: mongodb://mongo-cluster-ip-service:27017/taskaholic
             - name: MONGO_INITDB_DATABASE
-              value: taskaholic
+              valueFrom:
+                secretKeyRef:
+                  name: mongodatabase
+                  key: MONGO_INITDB_DATABASE
             - name: MONGO_INITDB_ROOT_USERNAME
               valueFrom:
                 secretKeyRef:

@@ -26,6 +26,7 @@ The initial name is the key. The commented name is the secret name.
 # MongoDB
 MONGO_INITDB_ROOT_USERNAME # mongouser
 MONGO_INITDB_ROOT_PASSWORD # mongopassword
+MONGO_INITDB_DATABASE # mongodatabase
 # JWT
 JWT_SECRET # jwtsecret
 # Email Service
