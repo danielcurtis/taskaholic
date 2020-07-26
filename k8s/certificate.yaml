@@ -1,0 +1,20 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: taskaholic-com-tls
+spec:
+  secretName: taskaholic-com
+  issuerRef:
+    - name: letsencrypt-prod
+      kind: ClusterIssuer
+  commonName: taskaholic.com
+  dnsNames:
+    - taskaholic.com
+    - www.taskaholic.com
+  acme:
+    config:
+      - http01:
+          ingressClass: nginx
+        domains:
+          - taskaholic.com
+          - www.taskaholic.com
