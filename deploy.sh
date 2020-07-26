@@ -1,5 +1,4 @@
-docker login
-kubectl create secret docker-registry regsecret --docker-username=$DOCKER_ID --docker-password=$DOCKER_PASSWORD --docker-email=contactdcurtis@gmail.com
+echo $DOCKER_PASSWORD | docker login -u $DOCKER_ID --password-stdin
 
 docker build -t curtiscodes/taskaholic-frontend:latest -t curtiscodes/taskaholic-frontend:$SHA -f ./frontend/Dockerfile ./frontend
 docker build -t curtiscodes/taskaholic-backend:latest -t curtiscodes/taskaholic-backend:$SHA -f ./backend/Dockerfile ./backend
