@@ -9,5 +9,5 @@ docker push curtiscodes/taskaholic-frontend:$SHA
 docker push curtiscodes/taskaholic-backend:$SHA
 
 kubectl apply -f k8s
-kubectl set image deployments/taskaholic-backend-deployment backend=curtiscodes/taskaholic-backend:$SHA
-kubectl set image deployments/taskaholic-frontend-deployment frontend=curtiscodes/taskaholic-frontend:$SHA
+kubectl set image deployments/backend-deployment backend=curtiscodes/taskaholic-backend:$SHA
+kubectl set image deployments/frontend-deployment frontend=curtiscodes/taskaholic-frontend:$SHA
