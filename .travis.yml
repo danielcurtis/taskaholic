@@ -17,7 +17,6 @@ before_install:
   - gcloud config set compute/zone us-central1-a
   - gcloud container clusters get-credentials taskaholic-cluster
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  - kubectl create secret docker-registry regsecret --docker-username="$DOCKER_ID" --docker-password="$DOCKER_PASSWORD" --docker-email=contactdcurtis@gmail.com
   - docker build -t curtiscodes/react-test -f ./frontend/Dockerfile.dev ./frontend
 
 script:
