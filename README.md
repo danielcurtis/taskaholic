@@ -35,8 +35,6 @@ SMTP_EMAIL
 SMTP_PASSWORD
 ```
 
-MONGO_INITDB_ROOT_PASSWORD
-
 ```bash
 kubectl create secret <secret type> <secret name> --from-literal <key=value>
 ```
@@ -45,6 +43,14 @@ Example (note, hash is not real):
 
 ```bash
 kubectl create secret generic jwtsecret --from-literal JWT_SECRET=somehashvaluef80h103fuu
+```
+
+**Create Docker registry secret:**
+
+The build results are stored in a private repo on Docker hub. To give kubectl the secret to login, run the following command:
+
+```bash
+kubectl create secret docker-registry regsecret --docker-username=<your username> --docker-password=<your pwd> --docker-email=<your email>
 ```
 
 ## Technologies
