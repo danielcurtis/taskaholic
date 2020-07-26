@@ -21,6 +21,8 @@ spec:
             # production || development
             - name: NODE_ENV
               value: development
+            - name: PORT
+              value: '5000'
             # MongoDB
             - name: MONGO_INITDB_DATABASE
               valueFrom:
