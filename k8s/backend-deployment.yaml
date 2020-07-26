@@ -20,7 +20,7 @@ spec:
           env:
             # production || development
             - name: NODE_ENV
-              value: production
+              value: development
             # MongoDB
             - name: MONGO_URI
               value: mongodb://mongo-cluster-ip-service:27017/taskaholic
@@ -51,3 +51,5 @@ spec:
               value: support@taskaholic.com
             - name: FROM_NAME
               value: Daniel at Taskaholic
+      imagePullSecrets:
+        - name: regsecret

@@ -17,3 +17,5 @@ spec:
           image: curtiscodes/taskaholic-frontend
           ports:
             - containerPort: 3000
+      imagePullSecrets:
+        - name: regsecret
