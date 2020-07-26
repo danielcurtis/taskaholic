@@ -1,4 +1,4 @@
-docker login --email=contactdcurtis@gmail.cok --username=$DOCKER_ID --password=$DOCKER_PASSWORD
+docker login -u $DOCKER_ID -p $DOCKER_PASSWORD docker.io
 
 docker build -t curtiscodes/taskaholic-frontend:latest -t curtiscodes/taskaholic-frontend:$SHA -f ./frontend/Dockerfile ./frontend
 docker build -t curtiscodes/taskaholic-backend:latest -t curtiscodes/taskaholic-backend:$SHA -f ./backend/Dockerfile ./backend
