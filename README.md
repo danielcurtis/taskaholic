@@ -54,6 +54,24 @@ The build results are stored in a private repo on Docker hub. To give kubectl th
 kubectl create secret docker-registry regsecret --docker-username=<your username> --docker-password=<your pwd> --docker-email=<your email>
 ```
 
+**Access K8s local development dashboard:**
+
+Run this command:
+
+```bash
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.3/aio/deploy/recommended.yaml
+```
+
+Set up a local proxy:
+
+```bash
+kubectl proxy
+```
+
+The dashboard should be live at the following link:
+
+[http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/](http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/)
+
 ## Technologies
 
 - React
