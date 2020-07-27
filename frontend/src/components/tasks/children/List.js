@@ -39,11 +39,8 @@ function List({ setToggle, tasks, setCurrent }) {
 
 				<div className="Tags-list">
 					{tasks.map((task) => {
-						console.log(task);
 						let time = 0;
-
 						task.timelog.map((el) => (time += parseInt(el[1])));
-						console.log(time);
 
 						return (
 							<div

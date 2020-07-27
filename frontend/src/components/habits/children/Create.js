@@ -48,7 +48,9 @@ function Create({ setErr, setLoading }) {
 					onChange={(e) => setStreak(parseInt(e.target.value))}
 				/>
 			</div>
-			<FiPlus className="Habits-create-icon" type="submit" />
+			<button type="submit" className="no-button">
+				<FiPlus className="Habits-create-icon" />
+			</button>
 		</form>
 	);
 }

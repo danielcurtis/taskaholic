@@ -7,7 +7,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 function Create({ setToggle }) {
 	const [name, setName] = useState('');
-	const [due, setDue] = useState('');
+	const [due, setDue] = useState(new Date());
 	const [desc, setDesc] = useState('');
 	const [stat, setStat] = useState('To Do');
 	const [err, setErr] = useState('');
@@ -31,27 +31,28 @@ function Create({ setToggle }) {
 	};
 
 	return (
-		<div>
+		<div className="Tags-create">
 			<form onSubmit={handleSubmit}>
-				<label>Name</label>
+				<label>Name:</label>
 				<input
 					type="text"
-					maxLength={6}
-					minLength={6}
+					maxLength={15}
+					minLength={3}
 					required={true}
 					value={name}
 					onChange={(e) => setName(e.target.value.toUpperCase())}></input>
 
-				<label>Due</label>
+				<label>Due:</label>
 				<DatePicker selected={due} onChange={(d) => setDue(d)} />
 
-				<label>Description</label>
+				<label>Description:</label>
 				<textarea
 					required={true}
+					maxLength={500}
 					value={desc}
 					onChange={(e) => setDesc(e.target.value)}></textarea>
 
-				<label>Status</label>
+				<label>Status:</label>
 				<select
 					required={true}
 					value={stat}
@@ -61,11 +62,14 @@ function Create({ setToggle }) {
 					<option value="Paused">Paused</option>
 					<option value="Completed">Completed</option>
 				</select>
-
-				<input type="submit" value="Submit"></input>
+				<span>
+					<button onClick={() => setToggle('List')}>Cancel</button>
+					<button className="blue-btn" type="submit">
+						Create Tag
+					</button>
+				</span>
 			</form>
-
-			<p>{err}</p>
+			<p className="red">{err}</p>
 		</div>
 	);
 }
