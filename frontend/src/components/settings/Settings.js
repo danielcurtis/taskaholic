@@ -35,9 +35,9 @@ function Settings() {
 				<button>Email Us</button>
 			</a>
 			{loading ? null : (
-				<div>
-					<Password user={user} />
+				<div className="Settings-forms">
 					<Details user={user} />
+					<Password user={user} />
 				</div>
 			)}
 			<p>
