@@ -7,7 +7,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 function Create({ setToggle }) {
 	const [tags, setTags] = useState([]);
-	const [tag, setTag] = useState('');
+	const [tag, setTag] = useState('Select a value');
 	const [name, setName] = useState('');
 	const [due, setDue] = useState('');
 	const [desc, setDesc] = useState('');
@@ -17,7 +17,13 @@ function Create({ setToggle }) {
 	useEffect(() => {
 		const getTags = async () => {
 			const { data } = await axios.get('/api/v1/tags');
-			setTags(data.data);
+
+			if (data.data.length === 0) {
+				setErr('Create a tag before creating a task.');
+			} else {
+				setStat('To Do');
+				setTags(data.data);
+			}
 		};
 
 		getTags();
@@ -38,12 +44,12 @@ function Create({ setToggle }) {
 			setToggle('List');
 		} catch (error) {
 			console.log(`Create task error: ${error.message}`);
-			setErr('Uh oh... please check your Internet and try again.');
+			setErr('Uh oh. Refresh and try again.');
 		}
 	};
 
 	return (
-		<div>
+		<div className="Tags-create">
 			<form onSubmit={handleSubmit}>
 				<label>Name</label>
 				<input
@@ -62,10 +68,8 @@ function Create({ setToggle }) {
 					onChange={(e) => setDesc(e.target.value)}></textarea>
 
 				<label>Tag</label>
-				<select
-					required={true}
-					value={tag}
-					onChange={(e) => setTag(e.target.value)}>
+				<select value={tag} onChange={(e) => setTag(e.target.value)}>
+					<option hidden>Select a value</option>
 					{tags.map((el) => (
 						<option key={el.id} value={el.id}>
 							{el.name}
@@ -84,10 +88,15 @@ function Create({ setToggle }) {
 					<option value="Completed">Completed</option>
 				</select>
 
-				<input type="submit" value="Submit"></input>
+				<span>
+					<button onClick={() => setToggle('List')}>Cancel</button>
+					<button className="blue-btn" type="submit">
+						Create Task
+					</button>
+				</span>
 			</form>
 
-			<p>{err}</p>
+			<p className="red">{err}</p>
 		</div>
 	);
 }

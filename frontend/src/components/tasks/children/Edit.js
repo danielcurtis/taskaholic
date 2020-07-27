@@ -4,13 +4,19 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { FaCalendarCheck } from 'react-icons/fa';
 
 function Edit({ setToggle, tasks, current }) {
 	let task = tasks.find((el) => el._id === current);
 
+	// Get inital total hours
+	let initTotal = 0;
+	task.timelog.map((el) => (initTotal += parseInt(el[1])));
+
 	const [name, setName] = useState(task.name);
 	const [due, setDue] = useState(new Date(task.due));
 	const [time, setTime] = useState(task.timelog);
+	const [total, setTotal] = useState(initTotal);
 	const [desc, setDesc] = useState(task.description);
 	const [stat, setStat] = useState(task.status);
 	const [err, setErr] = useState('');
@@ -48,10 +54,16 @@ function Edit({ setToggle, tasks, current }) {
 		}
 	};
 
-	const handleTimeClick = () => {
+	const handleTimeClick = (e) => {
+		e.preventDefault();
+
 		let arr = [...time];
+		let tot = 0;
 		arr.push([new Date(), 0]);
+		arr.map((i) => (tot += parseInt(i[1])));
+
 		setTime(arr);
+		setTotal(tot);
 	};
 
 	const handleHourChange = (i) => (e) => {
@@ -77,57 +89,75 @@ function Edit({ setToggle, tasks, current }) {
 	};
 
 	return (
-		<div>
+		<div className="Tags-edit">
 			<form onSubmit={handleSubmit}>
-				<label>Name</label>
-				<input
-					type="text"
-					required={true}
-					value={name}
-					onChange={(e) => setName(e.target.value)}></input>
+				<div>
+					<FaCalendarCheck style={{ marginRight: '8px', color: '#007aff' }} />
+					<input
+						type="text"
+						required={true}
+						value={name}
+						className="Tags-edit-name"
+						onChange={(e) => setName(e.target.value)}
+					/>
+				</div>
 
-				<label>Due</label>
-				<DatePicker selected={due} onChange={(d) => setDue(d)} />
-
-				<label>Description</label>
 				<textarea
 					required={true}
+					maxLength={500}
+					minLength={1}
 					value={desc}
-					onChange={(e) => setDesc(e.target.value)}></textarea>
+					className="Tags-edit-desc"
+					onChange={(e) => setDesc(e.target.value)}
+				/>
 
-				<label>Status</label>
-				<select
-					required={true}
-					value={stat}
-					onChange={(e) => setStat(e.target.value)}>
-					<option value="To Do">To Do</option>
-					<option value="In Progress">In Progress</option>
-					<option value="Paused">Paused</option>
-					<option value="Completed">Completed</option>
-				</select>
+				<div>
+					<select
+						required={true}
+						value={stat}
+						className="Tags-edit-status"
+						onChange={(e) => setStat(e.target.value)}>
+						<option value="To Do">To Do</option>
+						<option value="In Progress">In Progress</option>
+						<option value="Paused">Paused</option>
+						<option value="Completed">Completed</option>
+					</select>
+					<DatePicker
+						selected={due}
+						onChange={(d) => setDue(d)}
+						className="Tags-edit-date"
+					/>
+				</div>
 
-				<label>Timelog</label>
-				{time.map((el, i) => {
-					return (
-						<div key={i}>
-							<label>Time:</label>
-							<DatePicker
-								selected={new Date(time[i][0])}
-								onChange={(date) => handleDateChange(date, i)}
-							/>
-							<input value={time[i][1]} onChange={handleHourChange(i)}></input>
-						</div>
-					);
-				})}
+				<div className="Tasks-edit-timelog">
+					<strong
+						style={{ color: '#36456b' }}>{`${total} hours logged`}</strong>
 
-				<input type="submit" value="Submit"></input>
+					{time.map((el, i) => {
+						return (
+							<div key={i}>
+								<input value={time[i][1]} onChange={handleHourChange(i)} />{' '}
+								<DatePicker
+									selected={new Date(time[i][0])}
+									onChange={(date) => handleDateChange(date, i)}
+								/>
+							</div>
+						);
+					})}
+				</div>
+
+				<span>
+					<button className="red-btn" onClick={handleDelete}>
+						Delete
+					</button>
+					<button onClick={handleTimeClick}>New time log</button>
+					<button className="blue-btn" type="submit">
+						Save & Close
+					</button>
+				</span>
 			</form>
 
-			<button onClick={handleTimeClick}>New time log</button>
-
-			<button onClick={handleDelete}>Delete</button>
-
-			<p style={{ color: '#ec1416' }}>{err}</p>
+			<p className="red">{err}</p>
 		</div>
 	);
 }
