@@ -15,6 +15,10 @@ spec:
       containers:
         - name: backend
           image: curtiscodes/taskaholic-backend
+          resources:
+            limits:
+              memory: '128Mi'
+              cpu: '500m'
           ports:
             - containerPort: 5000
           env:
