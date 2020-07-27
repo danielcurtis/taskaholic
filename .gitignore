@@ -2,7 +2,16 @@
 backend/_data/
 backend/seeder.js
 
+# Config
 backend/config/config.env
 
+# Node Modules
 backend/node_modules
 frontend/node_modules
+
+# Local dev with docker compose
+nginx
+docker-compose.yaml
+
+# Local dev with k8s
+kubernetes-dashboard.yaml
