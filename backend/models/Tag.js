@@ -9,7 +9,7 @@ const TagSchema = new mongoose.Schema(
 			type: String,
 			required: [true, 'Please add a tag'],
 			trim: true,
-			maxlength: [6, 'Tag can not be more than 6 characters'],
+			maxlength: [15, 'Tag can not be more than 6 characters'],
 		},
 		due: String,
 		description: {

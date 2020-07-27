@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { FaTag } from 'react-icons/fa';
 
 function Edit({ setToggle, tags, current }) {
 	let tag = tags.find((el) => el.id === current);
@@ -44,43 +45,58 @@ function Edit({ setToggle, tags, current }) {
 	};
 
 	return (
-		<div>
+		<div className="Tags-edit">
 			<form onSubmit={handleSubmit}>
-				<label>Name</label>
-				<input
-					type="text"
-					maxLength={6}
-					minLength={6}
-					required={true}
-					value={name}
-					onChange={(e) => setName(e.target.value.toUpperCase())}></input>
+				<div>
+					<FaTag style={{ marginRight: '8px', color: '#007aff' }} />
+					<input
+						type="text"
+						maxLength={15}
+						minLength={6}
+						required={true}
+						value={name}
+						className="Tags-edit-name"
+						onChange={(e) => setName(e.target.value.toUpperCase())}
+					/>
+				</div>
 
-				<label>Due</label>
-				<DatePicker selected={due} onChange={(d) => setDue(d)} />
-
-				<label>Description</label>
 				<textarea
+					maxLength={500}
+					minLength={1}
 					required={true}
 					value={desc}
+					className="Tags-edit-desc"
 					onChange={(e) => setDesc(e.target.value)}></textarea>
 
-				<label>Status</label>
-				<select
-					required={true}
-					value={stat}
-					onChange={(e) => setStat(e.target.value)}>
-					<option value="To Do">To Do</option>
-					<option value="In Progress">In Progress</option>
-					<option value="Paused">Paused</option>
-					<option value="Completed">Completed</option>
-				</select>
+				<div>
+					<select
+						required={true}
+						value={stat}
+						className="Tags-edit-status"
+						onChange={(e) => setStat(e.target.value)}>
+						<option value="To Do">To Do</option>
+						<option value="In Progress">In Progress</option>
+						<option value="Paused">Paused</option>
+						<option value="Completed">Completed</option>
+					</select>
+					<DatePicker
+						selected={due}
+						onChange={(d) => setDue(d)}
+						className="Tags-edit-date"
+					/>
+				</div>
 
-				<input type="submit" value="Submit"></input>
+				<span>
+					<button className="red-btn" onClick={handleDelete}>
+						Delete
+					</button>
+					<button className="blue-btn" type="submit">
+						Save & Close
+					</button>
+				</span>
 			</form>
 
-			<button onClick={handleDelete}>Delete</button>
-
-			<p>{err}</p>
+			<p className="red">{err}</p>
 		</div>
 	);
 }
