@@ -1,8 +1,23 @@
 // @ts-check
 
 import React from 'react';
+import { FaTag } from 'react-icons/fa';
+import { FiClock } from 'react-icons/fi';
 
 function List({ setToggle, tags, setCurrent }) {
+	const convertDate = (d) => {
+		let date = new Date(d);
+		return (
+			(date.getMonth() > 8
+				? date.getMonth() + 1
+				: '0' + (date.getMonth() + 1)) +
+			'/' +
+			(date.getDate() > 9 ? date.getDate() : '0' + date.getDate()) +
+			'/' +
+			date.getFullYear()
+		);
+	};
+
 	const handleTagClick = (id) => {
 		setCurrent(id);
 		setToggle('Edit');
@@ -13,20 +28,35 @@ function List({ setToggle, tags, setCurrent }) {
 	} else {
 		return (
 			<div>
-				<h1>List</h1>
+				<div className="flex">
+					<h1>Your Tags</h1>
+					<button
+						onClick={() => setToggle('Create')}
+						style={{ marginLeft: '30px' }}>
+						Create Tag
+					</button>
+				</div>
 
-				<ul>
-					{tags.map((tag) => (
-						<li key={tag.name} onClick={() => handleTagClick(tag.id)}>
-							<span>{tag.name}</span>
-							<span>{tag.due}</span>
-							<span>{tag.status}</span>
-							<span>{tag.tasks.length}</span>
-						</li>
-					))}
-				</ul>
-
-				<button onClick={() => setToggle('Create')}>Create New Item</button>
+				<div className="Tags-list">
+					{tags.map((tag) => {
+						return (
+							<div
+								className="Tags-list-item"
+								onClick={() => handleTagClick(tag.id)}>
+								<h2>
+									<FaTag style={{ marginRight: '8px', color: '#007aff' }} />{' '}
+									{tag.name}
+								</h2>
+								<p>{tag.description}</p>
+								<span className="Tags-list-item-meta">{tag.status}</span>
+								<span className="Tags-list-item-meta">
+									<FiClock style={{ marginRight: '3px', fontSize: '10px' }} />
+									{convertDate(tag.due)}
+								</span>
+							</div>
+						);
+					})}
+				</div>
 			</div>
 		);
 	}
