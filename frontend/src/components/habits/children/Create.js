@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import axios from 'axios';
+import { FiPlus } from 'react-icons/fi';
 
 function Create({ setErr, setLoading }) {
 	const [name, setName] = useState('');
@@ -25,25 +26,29 @@ function Create({ setErr, setLoading }) {
 	};
 
 	return (
-		<form onSubmit={handleSubmit}>
-			<label>Habit Name</label>
-			<input
-				type="text"
-				minLength={1}
-				maxLength={10}
-				required={true}
-				value={name}
-				onChange={(e) => setName(e.target.value)}
-			/>
-			<label>Current Streak</label>
-			<input
-				type="number"
-				value={streak}
-				onChange={(e) => setStreak(parseInt(e.target.value))}
-			/>
-			<button className="blue-btn" type="submit">
-				Create Habit
-			</button>
+		<form className="Habits-create" onSubmit={handleSubmit}>
+			<div>
+				<label>Habit Name:</label>
+				<br />
+				<input
+					type="text"
+					minLength={1}
+					maxLength={10}
+					required={true}
+					value={name}
+					onChange={(e) => setName(e.target.value)}
+				/>
+			</div>
+			<div>
+				<label>Current Streak:</label>
+				<br />
+				<input
+					type="number"
+					value={streak}
+					onChange={(e) => setStreak(parseInt(e.target.value))}
+				/>
+			</div>
+			<FiPlus className="Habits-create-icon" type="submit" />
 		</form>
 	);
 }
