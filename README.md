@@ -29,7 +29,7 @@ JWT_EXPIRE=30d
 JWT_COOKIE_EXPIRE=30
 ```
 
-2. Copy **docker-compose.yaml**, **kubernetes-dashboard.yaml**, and **nginx** from the realease/aws-elastic-beanstalk branch
+2. Copy **docker-compose.yaml**, **kubernetes-dashboard.yaml**, and **nginx** from the **realease/aws-elastic-beanstalk** branch
 3. Run `docker-compose up` in the project root
 4. Visit the running app at [http://localhost:3050](http://localhost:3050)
 
