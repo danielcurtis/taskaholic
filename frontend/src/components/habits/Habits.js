@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { FiPlus, FiMinus, FiTrash2 } from 'react-icons/fi';
 import Create from './children/Create';
 
 function Habits() {
@@ -11,8 +12,9 @@ function Habits() {
 
 	useEffect(() => {
 		const getHabits = async () => {
-			const { data } = await axios.get('/api/v1/habits/');
-			setHabits(data.data);
+			let { data } = await axios.get('/api/v1/habits/');
+			data = data.data.sort((a, b) => (a.streak < b.streak ? 1 : -1));
+			setHabits(data);
 		};
 		getHabits();
 	}, [loading]);
@@ -33,36 +35,40 @@ function Habits() {
 
 	return (
 		<div>
+			<h1>Your Habits</h1>
+
 			{habits.map((el, i) => {
 				return (
-					<div key={el.name}>
-						<p>
-							{el.name} | {el.streak}
-						</p>
-						<button
-							onClick={async () => {
-								await handleStreak([el._id, el.streak, 1]);
-							}}>
-							Increase
-						</button>
-						<button
-							onClick={async () => {
-								await handleDelete(el._id);
-							}}>
-							Delete
-						</button>
-						<button
-							onClick={async () => {
-								await handleStreak([el._id, el.streak, -1]);
-							}}>
-							Decrease
-						</button>
+					<div className="Habits-list" key={el.name}>
+						<div style={{ display: 'flex', alignItems: 'center' }}>
+							<h1>{el.streak}</h1>
+							<strong>{el.name}</strong>
+						</div>
+						<div>
+							<FiPlus
+								className="Habits-list-icons"
+								onClick={async () => {
+									await handleStreak([el._id, el.streak, 1]);
+								}}
+							/>
+							<FiMinus
+								className="Habits-list-icons"
+								onClick={async () => {
+									await handleStreak([el._id, el.streak, -1]);
+								}}
+							/>
+							<FiTrash2
+								className="Habits-list-icons red"
+								onClick={async () => {
+									await handleDelete(el._id);
+								}}
+							/>
+						</div>
 					</div>
 				);
 			})}
 
 			<Create setErr={setErr} setLoading={setLoading} />
-
 			<p style={{ color: '#ec1416' }}>{err}</p>
 		</div>
 	);
