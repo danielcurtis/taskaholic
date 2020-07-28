@@ -5,7 +5,7 @@ import React from 'react';
 function Timesheet() {
 	return (
 		<div>
-			<h1>Timesheet</h1>
+			<h1>Timesheet coming soon...</h1>
 		</div>
 	);
 }
