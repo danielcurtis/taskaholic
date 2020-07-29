@@ -47,14 +47,17 @@ function Dashboard() {
 		<div>
 			<Header />
 			<div className="Dashboard">
+				{loading ? null : <Meter arr={tasks} />}
+
 				<h1>Tasks This Week</h1>
 				{loading ? <div>Loading...</div> : <Tasks tasks={tasks} />}
-				{loading ? null : <Meter arr={tasks} />}
+
 				<div>
 					<div style={{ width: '600px' }}>
 						<h1>Top Habits</h1>
 						{loading ? <div></div> : <Habits habits={habits} />}
 					</div>
+
 					<div>
 						<h1>Timesheet</h1>
 						{loading ? <div></div> : <Timelog tasks={tasks} />}

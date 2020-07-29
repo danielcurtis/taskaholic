@@ -18,8 +18,8 @@ function MapTasks({ name, arr }) {
 						<div key={i} className="Dashboard-tasks-map-group">
 							<div>{el.name}</div>
 							<div>
-								<div>{el.tag.name}</div>
-								<div>{convertDate(el.due)}</div>
+								<span>{el.tag.name}</span>
+								<span>{convertDate(el.due)}</span>
 							</div>
 						</div>
 					);
