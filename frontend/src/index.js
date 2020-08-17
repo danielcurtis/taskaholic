@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import { UserProvider } from './context/User';
 import './index.css';
+import './components/dashboard/dashboard.css';
 
 ReactDOM.render(
 	<React.StrictMode>
