@@ -46,21 +46,22 @@ function Dashboard() {
 	return (
 		<div>
 			<Header />
+			{loading ? null : <Meter arr={tasks} />}
 			<div className="Dashboard">
-				{loading ? null : <Meter arr={tasks} />}
-
-				<h1>Tasks This Week</h1>
-				{loading ? <div>Loading...</div> : <Tasks tasks={tasks} />}
+				<div>
+					<h1>Tasks This Week</h1>
+					{loading ? <div>Loading...</div> : <Tasks tasks={tasks} />}
+				</div>
 
 				<div>
-					<div style={{ width: '600px' }}>
-						<h1>Top Habits</h1>
-						{loading ? <div></div> : <Habits habits={habits} />}
-					</div>
-
 					<div>
 						<h1>Timesheet</h1>
 						{loading ? <div></div> : <Timelog tasks={tasks} />}
+					</div>
+
+					<div>
+						<h1 style={{ marginTop: 50 }}>Top Habits</h1>
+						{loading ? <div></div> : <Habits habits={habits} />}
 					</div>
 				</div>
 			</div>

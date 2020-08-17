@@ -42,7 +42,7 @@ function Timelog({ tasks }) {
 			<table>
 				<thead>
 					<tr>
-						<th>Task</th>
+						<th style={{ fontStyle: 'normal' }}>Task</th>
 						<th>Mo</th>
 						<th>Tu</th>
 						<th>We</th>
