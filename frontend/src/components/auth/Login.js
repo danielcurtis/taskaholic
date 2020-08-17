@@ -39,30 +39,32 @@ function Login({ toggle, setToggle }) {
 	};
 
 	return (
-		<div className="Auth-form">
-			<label>Email:</label>
-			<input
-				type="email"
-				placeholder="jane@example.com"
-				required={true}
-				onChange={(e) => {
-					setEmail(e.target.value);
-				}}
-			/>
-			<label>Password:</label>
-			<input
-				type="password"
-				required={true}
-				onChange={(e) => {
-					setPassword(e.target.value);
-				}}
-			/>
-			<div>
-				<button onClick={() => setToggle(!toggle)}>Sign Up</button>
-				<button className="Auth-form-btn" onClick={() => handleLogin()}>
-					{btn}
-				</button>
-			</div>
+		<div>
+			<form className="Auth-form" onSubmit={handleLogin}>
+				<label>Email:</label>
+				<input
+					type="email"
+					placeholder="jane@example.com"
+					required={true}
+					onChange={(e) => {
+						setEmail(e.target.value);
+					}}
+				/>
+				<label>Password:</label>
+				<input
+					type="password"
+					required={true}
+					onChange={(e) => {
+						setPassword(e.target.value);
+					}}
+				/>
+				<div>
+					<button onClick={() => setToggle(!toggle)}>Sign Up</button>
+					<button className="Auth-form-btn" type="submit">
+						{btn}
+					</button>
+				</div>
+			</form>
 			{err}
 		</div>
 	);
