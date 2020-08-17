@@ -14,9 +14,8 @@ const TaskSchema = new mongoose.Schema({
 	timelog: Array,
 	description: {
 		type: String,
-		required: [true, 'Please add a name'],
 		trim: true,
-		maxlength: [500, 'Name can not be more than 50 characters'],
+		maxlength: [500, 'Description can not be more than 500 characters'],
 	},
 	status: {
 		type: String,
