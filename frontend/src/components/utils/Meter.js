@@ -32,47 +32,65 @@ function Meter({ arr }) {
 		width: '100%',
 		height: '16px',
 		borderRadius: '8px',
-		background: '#36456b',
+		background: 'var(--gradient-grey-lin)',
 		display: 'flex',
 	};
 	const todoStyle = {
 		width: `${todo}%`,
 		height: '16px',
 		borderRadius: '0px',
-		background: '#ec1416',
+		background: 'var(--gradient-red-lin)',
 	};
 	const progressStyle = {
 		width: `${progress}%`,
 		height: '16px',
 		borderRadius: '0px',
-		background: '#007aff',
+		background: 'var(--gradient-blue-lin)',
 	};
 	const completedStyle = {
 		width: `${completed}%`,
 		height: '16px',
 		borderRadius: '0px',
-		background: '#58d188',
+		background: 'var(--gradient-green-lin)',
 	};
 
 	// border radius: top left, top right, bottom right, bottom left
-	if (todo > 0 && progress > 0 && completed > 0) {
+	if (todo > 0 && progress > 0 && completed > 0 && paused > 0) {
+		todoStyle.borderRadius = '8px 0px 0px 8px';
+		completedStyle.borderRadius = '0px 0px 0px 0px';
+	} else if (todo > 0 && progress > 0 && completed > 0) {
 		todoStyle.borderRadius = '8px 0px 0px 8px';
 		completedStyle.borderRadius = '0px 8px 8px 0px';
+	} else if (todo > 0 && progress > 0 && paused > 0) {
+		todoStyle.borderRadius = '8px 0px 0px 8px';
+		progressStyle.borderRadius = '0px 0px 0px 0px';
 	} else if (todo > 0 && progress > 0) {
 		todoStyle.borderRadius = '8px 0px 0px 8px';
 		progressStyle.borderRadius = '0px 8px 8px 0px';
+	} else if (todo > 0 && completed > 0 && paused > 0) {
+		todoStyle.borderRadius = '8px 0px 0px 8px';
+		completedStyle.borderRadius = '0px 0px 0px 0px';
 	} else if (todo > 0 && completed > 0) {
 		todoStyle.borderRadius = '8px 0px 0px 8px';
 		completedStyle.borderRadius = '0px 8px 8px 0px';
+	} else if (todo > 0 && paused > 0) {
+		todoStyle.borderRadius = '8px 0px 0px 8px';
 	} else if (todo > 0) {
-		todoStyle.borderRadius = '8px';
+		todoStyle.borderRadius = '8px 8px 8px 8px';
+	} else if (progress > 0 && completed > 0 && paused > 0) {
+		progressStyle.borderRadius = '8px 0px 0px 8px';
+		completedStyle.borderRadius = '0px 0px 0px 0px';
 	} else if (progress > 0 && completed > 0) {
 		progressStyle.borderRadius = '8px 0px 0px 8px';
 		completedStyle.borderRadius = '0px 8px 8px 0px';
+	} else if (progress > 0 && paused > 0) {
+		progressStyle.borderRadius = '8px 0px 0px 8px';
 	} else if (progress > 0) {
-		progressStyle.borderRadius = '8px';
+		progressStyle.borderRadius = '8px 8px 8px 8px';
+	} else if (completed > 0 && paused > 0) {
+		completedStyle.borderRadius = '8px 0px 0px 8px';
 	} else if (completed > 0) {
-		completedStyle.borderRadius = '8px';
+		completedStyle.borderRadius = '8px 8px 8px 8px';
 	}
 
 	return (
