@@ -13,20 +13,12 @@ import Brand from './children/Brand';
 
 function Menu({ setView }) {
 	// Top-level components
-	const listData = [
-		'Dashboard',
-		'Tasks',
-		'Tags',
-		'Habits',
-		'Timesheet',
-		'Settings',
-	];
+	const listData = ['Dashboard', 'Tasks', 'Tags', 'Habits', 'Settings'];
 	const listIcons = [
 		<AiOutlineReconciliation />,
 		<AiOutlineCheckCircle />,
 		<AiOutlineFolderOpen />,
 		<AiOutlineBarChart />,
-		<AiOutlineClockCircle />,
 		<AiOutlineSetting />,
 	];
 
