@@ -1,0 +1,86 @@
+.Tasks-Edit {
+	position: fixed;
+	top: 0;
+	left: 0;
+	backdrop-filter: blur(5px);
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.Tasks-Edit-form {
+	background: var(--main-white);
+	padding: 3vw;
+	border-radius: 20px;
+	box-shadow: var(--box-shadow-lg);
+}
+
+.Tasks-Edit-date,
+.Tasks-Edit-status {
+	background: var(--gradient-blue);
+	padding: 3px 6px;
+	color: white;
+	margin-right: 4px;
+	border-radius: 3px;
+	font-size: small;
+	font-weight: bold;
+	min-height: 17px;
+	max-width: 120px;
+	box-shadow: var(--box-shadow);
+	border: none;
+}
+
+.Tasks-Edit-date {
+	max-width: 70px;
+}
+
+.Tasks-Edit-form > form > input,
+.Tasks-Edit-form > form > s div,
+.Tasks-Edit-form > form > div > div,
+.Tasks-Edit-form > form > textarea,
+.Tasks-Edit-form > form > select {
+	margin: 8px 0 12px 0;
+}
+
+.Tasks-Edit-form > form > input,
+.Tasks-Edit-form > form > textarea,
+.Tasks-Edit-form > form > div {
+	min-width: 320px;
+}
+
+.Tasks-Kanban {
+	display: flex;
+	margin-top: 30px;
+}
+
+.Tasks-Kanban-col {
+	margin: 0 auto;
+	background: var(--main-white);
+	border-radius: 20px;
+	padding: 1px 20px 20px 20px;
+}
+
+.Tasks-Kanban-col:nth-of-type(4) {
+	margin-right: 0;
+}
+
+.Tasks-Kanban-edit-btn {
+	background: var(--secondary-white);
+	color: var(--main-grey);
+	box-shadow: var(--box-shadow-inner);
+	padding: 6px;
+	margin-left: 10px;
+	border-radius: 8px;
+	cursor: pointer;
+}
+
+.Tasks-Kanban-tag {
+	padding: 2px 4px;
+	background: var(--secondary-white);
+	box-shadow: var(--box-shadow-inner);
+	font-size: 10px;
+	margin: 8px 1px 0 1px;
+	border-radius: 2px;
+}

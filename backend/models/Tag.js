@@ -19,7 +19,6 @@ const TagSchema = new mongoose.Schema(
 		},
 		status: {
 			type: String,
-			required: [true, 'Please set status'],
 			enum: ['Completed', 'In Progress', 'Paused', 'To Do'],
 		},
 		createdAt: {

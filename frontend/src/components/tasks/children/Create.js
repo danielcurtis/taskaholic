@@ -5,7 +5,7 @@ import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
-function Create({ setToggle }) {
+function Create({ setCreate }) {
 	const [tags, setTags] = useState([]);
 	const [tag, setTag] = useState('Select a value');
 	const [name, setName] = useState('');
@@ -41,7 +41,7 @@ function Create({ setToggle }) {
 				status: stat,
 			});
 
-			setToggle('List');
+			setCreate(false);
 		} catch (error) {
 			console.log(`Create task error: ${error.message}`);
 			setErr('Uh oh. Refresh and try again.');
@@ -49,54 +49,67 @@ function Create({ setToggle }) {
 	};
 
 	return (
-		<div className="Tags-create">
-			<form onSubmit={handleSubmit}>
-				<label>Name</label>
-				<input
-					type="text"
-					required={true}
-					value={name}
-					onChange={(e) => setName(e.target.value)}></input>
+		<div className="Tasks-Edit">
+			<div className="Tasks-Edit-form">
+				<form onSubmit={handleSubmit}>
+					<label>Name:</label>
+					<br />
+					<input
+						type="text"
+						required={true}
+						value={name}
+						onChange={(e) => setName(e.target.value)}></input>
+					<br />
 
-				<label>Due</label>
-				<DatePicker selected={due} onChange={(d) => setDue(d)} />
+					<label>Description:</label>
+					<br />
+					<textarea
+						required={true}
+						value={desc}
+						onChange={(e) => setDesc(e.target.value)}></textarea>
+					<br />
 
-				<label>Description</label>
-				<textarea
-					required={true}
-					value={desc}
-					onChange={(e) => setDesc(e.target.value)}></textarea>
+					<label>Due:</label>
+					<br />
+					<DatePicker selected={due} onChange={(d) => setDue(d)} />
+					<br />
 
-				<label>Tag</label>
-				<select value={tag} onChange={(e) => setTag(e.target.value)}>
-					<option hidden>Select a value</option>
-					{tags.map((el) => (
-						<option key={el.id} value={el.id}>
-							{el.name}
-						</option>
-					))}
-				</select>
+					<label>Tag:</label>
+					<br />
+					<select value={tag} onChange={(e) => setTag(e.target.value)}>
+						<option hidden>Select a value</option>
+						{tags.map((el) => (
+							<option key={el.id} value={el.id}>
+								{el.name}
+							</option>
+						))}
+					</select>
+					<br />
 
-				<label>Status</label>
-				<select
-					required={true}
-					value={stat}
-					onChange={(e) => setStat(e.target.value)}>
-					<option value="To Do">To Do</option>
-					<option value="In Progress">In Progress</option>
-					<option value="Paused">Paused</option>
-					<option value="Completed">Completed</option>
-				</select>
+					<label>Status:</label>
+					<br />
+					<select
+						required={true}
+						value={stat}
+						onChange={(e) => setStat(e.target.value)}>
+						<option value="To Do">To Do</option>
+						<option value="In Progress">In Progress</option>
+						<option value="Paused">Paused</option>
+						<option value="Completed">Completed</option>
+					</select>
+					<br />
 
-				<span>
-					<button onClick={() => setToggle('List')}>Cancel</button>
-					<button className="blue-btn" type="submit">
-						Create Task
-					</button>
-				</span>
-			</form>
+					<div style={{ textAlign: 'right' }}>
+						<button onClick={() => setCreate(false)}>Cancel</button>
+						{` `}
+						<button className="blue-btn" type="submit">
+							Create Task
+						</button>
+					</div>
+				</form>
 
-			<p className="red">{err}</p>
+				<p className="red">{err}</p>
+			</div>
 		</div>
 	);
 }

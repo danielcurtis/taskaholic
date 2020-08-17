@@ -2,9 +2,8 @@
 
 import React, { useState } from 'react';
 import axios from 'axios';
-import { FiPlus } from 'react-icons/fi';
 
-function Create({ setErr, setLoading }) {
+function Create({ setErr, setLoading, setCreate }) {
 	const [name, setName] = useState('');
 	const [streak, setStreak] = useState(0);
 
@@ -18,6 +17,7 @@ function Create({ setErr, setLoading }) {
 				streak: streak,
 			});
 
+			setCreate(false);
 			setLoading(false);
 		} catch (error) {
 			console.log(`Create task error: ${error.message}`);
@@ -26,32 +26,40 @@ function Create({ setErr, setLoading }) {
 	};
 
 	return (
-		<form className="Habits-create" onSubmit={handleSubmit}>
-			<div>
-				<label>Habit Name:</label>
-				<br />
-				<input
-					type="text"
-					minLength={1}
-					maxLength={10}
-					required={true}
-					value={name}
-					onChange={(e) => setName(e.target.value)}
-				/>
+		<div className="Habits-Create">
+			<div className="Habits-Create-form">
+				<form onSubmit={handleSubmit}>
+					<label>Habit Name:</label>
+					<br />
+					<input
+						type="text"
+						minLength={1}
+						maxLength={10}
+						required={true}
+						value={name}
+						onChange={(e) => setName(e.target.value)}
+					/>
+					<br />
+
+					<label>Current Streak:</label>
+					<br />
+					<input
+						type="number"
+						value={streak}
+						onChange={(e) => setStreak(parseInt(e.target.value))}
+					/>
+					<br />
+
+					<div style={{ textAlign: 'right' }}>
+						<button onClick={() => setCreate(false)}>Cancel</button>
+						{` `}
+						<button className="blue-btn" type="submit">
+							New Habit
+						</button>
+					</div>
+				</form>
 			</div>
-			<div>
-				<label>Current Streak:</label>
-				<br />
-				<input
-					type="number"
-					value={streak}
-					onChange={(e) => setStreak(parseInt(e.target.value))}
-				/>
-			</div>
-			<button type="submit" className="no-button">
-				<FiPlus className="Habits-create-icon" />
-			</button>
-		</form>
+		</div>
 	);
 }
 

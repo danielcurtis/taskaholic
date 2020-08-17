@@ -34,6 +34,7 @@ function Meter({ arr }) {
 		borderRadius: '8px',
 		background: 'var(--gradient-grey-lin)',
 		display: 'flex',
+		boxShadow: 'var(--box-shadow-inner)',
 	};
 	const todoStyle = {
 		width: `${todo}%`,

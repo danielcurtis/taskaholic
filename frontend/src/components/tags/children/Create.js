@@ -2,10 +2,9 @@
 
 import React, { useState } from 'react';
 import axios from 'axios';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
+import Form from './Form';
 
-function Create({ setToggle }) {
+function Create({ setCreate, update, setUpdate }) {
 	const [name, setName] = useState('');
 	const [due, setDue] = useState(new Date());
 	const [desc, setDesc] = useState('');
@@ -22,8 +21,8 @@ function Create({ setToggle }) {
 				description: desc,
 				status: stat,
 			});
-
-			setToggle('List');
+			setUpdate(update + 1);
+			setCreate(false);
 		} catch (error) {
 			console.log(`Create tag error: ${error.message}`);
 			setErr('Uh oh... please check your Internet and try again.');
@@ -31,45 +30,30 @@ function Create({ setToggle }) {
 	};
 
 	return (
-		<div className="Tags-create">
-			<form onSubmit={handleSubmit}>
-				<label>Name:</label>
-				<input
-					type="text"
-					maxLength={15}
-					minLength={3}
-					required={true}
-					value={name}
-					onChange={(e) => setName(e.target.value.toUpperCase())}></input>
+		<div className="Tags-Edit">
+			<div className="Tags-Edit-form">
+				<form onSubmit={handleSubmit}>
+					<Form
+						name={name}
+						setName={setName}
+						desc={desc}
+						setDesc={setDesc}
+						due={due}
+						setDue={setDue}
+						stat={stat}
+						setStat={setStat}
+					/>
 
-				<label>Due:</label>
-				<DatePicker selected={due} onChange={(d) => setDue(d)} />
-
-				<label>Description:</label>
-				<textarea
-					required={true}
-					maxLength={500}
-					value={desc}
-					onChange={(e) => setDesc(e.target.value)}></textarea>
-
-				<label>Status:</label>
-				<select
-					required={true}
-					value={stat}
-					onChange={(e) => setStat(e.target.value)}>
-					<option value="To Do">To Do</option>
-					<option value="In Progress">In Progress</option>
-					<option value="Paused">Paused</option>
-					<option value="Completed">Completed</option>
-				</select>
-				<span>
-					<button onClick={() => setToggle('List')}>Cancel</button>
-					<button className="blue-btn" type="submit">
-						Create Tag
-					</button>
-				</span>
-			</form>
-			<p className="red">{err}</p>
+					<div style={{ textAlign: 'right' }}>
+						<button onClick={() => setCreate(false)}>Cancel</button>
+						{` `}
+						<button className="blue-btn" type="submit">
+							Create Tag
+						</button>
+					</div>
+				</form>
+				<p className="red">{err}</p>
+			</div>
 		</div>
 	);
 }

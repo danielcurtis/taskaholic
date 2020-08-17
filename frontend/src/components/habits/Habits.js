@@ -3,10 +3,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { FiPlus, FiMinus, FiTrash2 } from 'react-icons/fi';
+import convertDate from '../utils/convertDate';
 import Create from './children/Create';
 
 function Habits() {
 	const [habits, setHabits] = useState([]);
+	const [create, setCreate] = useState(false);
+	const [update, setUpdate] = useState(0);
 	const [err, setErr] = useState('');
 	const [loading, setLoading] = useState(false);
 
@@ -34,16 +37,25 @@ function Habits() {
 	};
 
 	return (
-		<div>
-			<h1>Your Habits</h1>
+		<div className="Habits">
+			<div className="flex">
+				<h1>Habits</h1>
+				<button onClick={() => setCreate(true)}>New Habit</button>
+			</div>
 
 			{habits.map((el, i) => {
+				console.log(el);
 				return (
-					<div className="Habits-list" key={el.name}>
-						<div style={{ display: 'flex', alignItems: 'center' }}>
+					<div className="Habits-list flex" key={el.name}>
+						<div className="flex">
 							<h1>{el.streak}</h1>
-							<strong>{el.name}</strong>
+							<div>
+								<strong>{el.name}</strong>
+								<br />
+								<small>Started {convertDate(el.createdAt)}</small>
+							</div>
 						</div>
+
 						<div>
 							<FiPlus
 								className="Habits-list-icons"
@@ -51,12 +63,14 @@ function Habits() {
 									await handleStreak([el._id, el.streak, 1]);
 								}}
 							/>
+							<br />
 							<FiMinus
 								className="Habits-list-icons"
 								onClick={async () => {
 									await handleStreak([el._id, el.streak, -1]);
 								}}
 							/>
+							<br />
 							<FiTrash2
 								className="Habits-list-icons red"
 								onClick={async () => {
@@ -68,8 +82,11 @@ function Habits() {
 				);
 			})}
 
-			<Create setErr={setErr} setLoading={setLoading} />
-			<p style={{ color: '#ec1416' }}>{err}</p>
+			{create ? (
+				<Create setErr={setErr} setLoading={setLoading} setCreate={setCreate} />
+			) : null}
+
+			<p className="red">{err}</p>
 		</div>
 	);
 }

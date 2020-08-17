@@ -1,7 +1,6 @@
 .Dashboard {
 	display: flex;
 	justify-content: space-between;
-	flex: 1 1 0;
 	margin-top: 3vh;
 }
 
@@ -48,7 +47,7 @@
 
 .Dashboard-habits {
 	display: flex;
-	overflow-y: scroll;
+	width: 540px;
 }
 
 .Dashboard-habits > div {
@@ -77,10 +76,10 @@
 }
 
 .Dashboard-timelog {
-	overflow-y: scroll;
 	background: var(--main-white);
 	padding: 30px;
 	border-radius: 30px;
+	width: 400px;
 }
 
 .Dashboard-timelog > table {
