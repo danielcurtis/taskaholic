@@ -2,40 +2,56 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Meter from '../utils/Meter';
 import Create from './children/Create';
-import List from './children/List';
 import Edit from './children/Edit';
+import Kanban from './children/Kanban';
 
 function Tasks() {
-	const [toggle, setToggle] = useState('List');
 	const [tasks, setTasks] = useState([]);
-	const [current, setCurrent] = useState('');
+	const [loading, setLoading] = useState(true);
+	const [create, setCreate] = useState(false);
+	const [edit, setEdit] = useState(false);
+	const [current, setCurrent] = useState();
+	const [update, setUpdate] = useState(0);
 
 	useEffect(() => {
 		const getTasks = async () => {
 			const { data } = await axios.get('/api/v1/tasks');
 			setTasks(data.data);
+			setLoading(false);
 		};
 
 		getTasks();
-	}, [toggle]);
+	}, [update]);
 
-	if (toggle === 'List') {
+	if (loading) {
+		return <div>Loading...</div>;
+	} else {
 		return (
-			<div>
-				<List setToggle={setToggle} tasks={tasks} setCurrent={setCurrent} />
-			</div>
-		);
-	} else if (toggle === 'Edit') {
-		return (
-			<div>
-				<Edit setToggle={setToggle} tasks={tasks} current={current} />
-			</div>
-		);
-	} else if (toggle === 'Create') {
-		return (
-			<div>
-				<Create setToggle={setToggle} />
+			<div className="Tasks">
+				<div className="flex">
+					<h1>Tasks</h1>
+					<button onClick={() => setCreate(true)}>Create Tag</button>
+				</div>
+				<Meter arr={tasks} />
+				<Kanban
+					tasks={tasks}
+					update={update}
+					setUpdate={setUpdate}
+					setEdit={setEdit}
+					setCurrent={setCurrent}
+				/>
+				{create ? <Create setCreate={setCreate} /> : null}
+				{edit ? (
+					<Edit
+						tasks={tasks}
+						setEdit={setEdit}
+						current={current}
+						update={update}
+						setUpdate={setUpdate}
+					/>
+				) : null}
 			</div>
 		);
 	}

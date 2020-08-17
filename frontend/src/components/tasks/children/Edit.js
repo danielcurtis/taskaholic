@@ -4,9 +4,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { FaCalendarCheck } from 'react-icons/fa';
 
-function Edit({ setToggle, tasks, current }) {
+function Edit({ tasks, setEdit, current, update, setUpdate }) {
 	let task = tasks.find((el) => el._id === current);
 
 	// Get inital total hours
@@ -35,7 +34,8 @@ function Edit({ setToggle, tasks, current }) {
 				description: desc,
 				status: stat,
 			});
-			setToggle('List');
+			setEdit(false);
+			setUpdate(update + 1);
 		} catch (error) {
 			console.log(`Edit task error: ${error.message}`);
 			setErr('Uh oh. Check your Internet and refresh.');
@@ -47,7 +47,8 @@ function Edit({ setToggle, tasks, current }) {
 
 		try {
 			await axios.delete(`/api/v1/tasks/${current}`);
-			setToggle('List');
+			setEdit(false);
+			setUpdate(update + 1);
 		} catch (error) {
 			console.log(`Delete task error: ${error.message}`);
 			setErr('Uh oh. Check your Internet and refresh.');
@@ -89,75 +90,82 @@ function Edit({ setToggle, tasks, current }) {
 	};
 
 	return (
-		<div className="Tags-edit">
-			<form onSubmit={handleSubmit}>
-				<div>
-					<FaCalendarCheck style={{ marginRight: '8px', color: '#007aff' }} />
+		<div className="Tasks-Edit">
+			<div className="Tasks-Edit-form">
+				<form onSubmit={handleSubmit}>
+					<label>Name:</label>
+					<br />
 					<input
 						type="text"
 						required={true}
 						value={name}
-						className="Tags-edit-name"
+						className="Tasks-Edit-name"
 						onChange={(e) => setName(e.target.value)}
 					/>
-				</div>
+					<br />
 
-				<textarea
-					required={true}
-					maxLength={500}
-					minLength={1}
-					value={desc}
-					className="Tags-edit-desc"
-					onChange={(e) => setDesc(e.target.value)}
-				/>
-
-				<div>
-					<select
+					<label>Description:</label>
+					<br />
+					<textarea
 						required={true}
-						value={stat}
-						className="Tags-edit-status"
-						onChange={(e) => setStat(e.target.value)}>
-						<option value="To Do">To Do</option>
-						<option value="In Progress">In Progress</option>
-						<option value="Paused">Paused</option>
-						<option value="Completed">Completed</option>
-					</select>
-					<DatePicker
-						selected={due}
-						onChange={(d) => setDue(d)}
-						className="Tags-edit-date"
+						maxLength={500}
+						minLength={1}
+						value={desc}
+						className="Tasks-Edit-desc"
+						onChange={(e) => setDesc(e.target.value)}
 					/>
-				</div>
+					<br />
 
-				<div className="Tasks-edit-timelog">
-					<strong
-						style={{ color: '#36456b' }}>{`${total} hours logged`}</strong>
+					<div>
+						<select
+							required={true}
+							value={stat}
+							className="Tasks-Edit-status"
+							onChange={(e) => setStat(e.target.value)}>
+							<option value="To Do">To Do</option>
+							<option value="In Progress">In Progress</option>
+							<option value="Paused">Paused</option>
+							<option value="Completed">Completed</option>
+						</select>
+						<DatePicker
+							selected={due}
+							onChange={(d) => setDue(d)}
+							className="Tasks-Edit-date"
+						/>
+					</div>
 
-					{time.map((el, i) => {
-						return (
-							<div key={i}>
-								<input value={time[i][1]} onChange={handleHourChange(i)} />{' '}
-								<DatePicker
-									selected={new Date(time[i][0])}
-									onChange={(date) => handleDateChange(date, i)}
-								/>
-							</div>
-						);
-					})}
-				</div>
+					<div className="Tasks-Edit-timelog">
+						<strong
+							style={{ color: '#36456b' }}>{`${total} hours logged`}</strong>
 
-				<span>
-					<button className="red-btn" onClick={handleDelete}>
-						Delete
-					</button>
-					<button onClick={handleTimeClick}>New time log</button>
-					<button className="blue-btn" type="submit">
-						Save & Close
-					</button>
-				</span>
-			</form>
+						{time.map((el, i) => {
+							return (
+								<div key={i}>
+									<input value={time[i][1]} onChange={handleHourChange(i)} />{' '}
+									<DatePicker
+										selected={new Date(time[i][0])}
+										onChange={(date) => handleDateChange(date, i)}
+									/>
+								</div>
+							);
+						})}
+					</div>
 
-			<p className="red">{err}</p>
+					<div style={{ textAlign: 'right' }}>
+						<button className="red-btn" onClick={handleDelete}>
+							Delete
+						</button>
+						{` `}
+						<button onClick={handleTimeClick}>Log Time</button>
+						{` `}
+						<button className="blue-btn" type="submit">
+							Save & Close
+						</button>
+					</div>
+				</form>
+
+				<p className="red">{err}</p>
+			</div>
 		</div>
 	);
 }
