@@ -32,7 +32,7 @@ function Tasks() {
 			<div className="Tasks">
 				<div className="flex">
 					<h1>Tasks</h1>
-					<button onClick={() => setCreate(true)}>Create Tag</button>
+					<button onClick={() => setCreate(true)}>Create Task</button>
 				</div>
 				<Meter arr={tasks} />
 				<Kanban
