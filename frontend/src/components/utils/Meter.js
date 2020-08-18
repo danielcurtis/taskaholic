@@ -1,7 +1,6 @@
 // @ts-check
 
 import React from 'react';
-import { toDo } from './filterTasks';
 
 function Meter({ arr }) {
 	// Use CSS in JS instead index.css classes
@@ -12,13 +11,15 @@ function Meter({ arr }) {
 
 	arr.map((el) => {
 		if (el.status === 'To Do') {
-			todo++;
+			return todo++;
 		} else if (el.status === 'In Progress') {
-			progress++;
+			return progress++;
 		} else if (el.status === 'Paused') {
-			paused++;
+			return paused++;
 		} else if (el.status === 'Completed') {
-			completed++;
+			return completed++;
+		} else {
+			return 0;
 		}
 	});
 

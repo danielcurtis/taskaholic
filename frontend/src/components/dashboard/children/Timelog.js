@@ -31,10 +31,13 @@ function Timelog({ tasks }) {
 				let taskDate = new Date(el.timelog[i][0]).toDateString();
 				let weekDate = new Date(weekDates[j]).toDateString();
 
-				if (taskDate === weekDate) obj.times[j] = el.timelog[i][1];
+				if (taskDate === weekDate) {
+					obj.times[j] = el.timelog[i][1];
+				}
 			}
 		}
-		taskTimes.push(obj);
+
+		return taskTimes.push(obj);
 	});
 
 	return (

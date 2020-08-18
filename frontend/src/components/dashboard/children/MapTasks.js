@@ -2,7 +2,6 @@
 
 import React from 'react';
 import convertDate from '../../utils/convertDate';
-import colorFromName from '../../utils/colorFromName';
 
 function MapTasks({ name, arr }) {
 	arr.sort((a, b) => (a.due > b.due ? 1 : -1));

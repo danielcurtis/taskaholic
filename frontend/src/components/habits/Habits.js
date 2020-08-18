@@ -9,7 +9,6 @@ import Create from './children/Create';
 function Habits() {
 	const [habits, setHabits] = useState([]);
 	const [create, setCreate] = useState(false);
-	const [update, setUpdate] = useState(0);
 	const [err, setErr] = useState('');
 	const [loading, setLoading] = useState(false);
 
