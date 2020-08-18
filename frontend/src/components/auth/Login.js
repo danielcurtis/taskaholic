@@ -40,7 +40,7 @@ function Login({ toggle, setToggle }) {
 
 	return (
 		<div>
-			<form className="Auth-form" onSubmit={handleLogin}>
+			<div className="Auth-form">
 				<label>Email:</label>
 				<input
 					type="email"
@@ -60,11 +60,11 @@ function Login({ toggle, setToggle }) {
 				/>
 				<div>
 					<button onClick={() => setToggle(!toggle)}>Sign Up</button>
-					<button className="Auth-form-btn" type="submit">
+					<button className="Auth-form-btn" onClick={handleLogin}>
 						{btn}
 					</button>
 				</div>
-			</form>
+			</div>
 			{err}
 		</div>
 	);

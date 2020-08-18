@@ -166,6 +166,334 @@ a {
 }
 
 /* Components */
+/* Dashboard */
+.Dashboard {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 3vh;
+}
+
+.Dashboard-tasks {
+	width: 480px;
+	background: var(--main-white);
+	padding: 5px 40px 40px 40px;
+	border-radius: 30px;
+	margin: 0;
+}
+
+.Dashboard-tasks-map > h2 {
+	margin: 40px 0 10px;
+}
+
+.Dashboard-tasks-map-group {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 12px 0;
+	border-bottom: 1px solid var(--secondary-grey);
+}
+
+.Dashboard-tasks-map-group > div {
+	display: flex;
+}
+
+.Dashboard-tasks-map-group > div > span {
+	background: var(--gradient-white);
+	padding: 3px 6px;
+	color: var(--main-grey);
+	margin: 0 6px 0 0px;
+	border-radius: 3px;
+	font-size: 11px;
+	font-weight: bold;
+	box-shadow: var(--box-shadow);
+}
+
+.Dashboard-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.Dashboard-habits {
+	display: flex;
+	width: 540px;
+}
+
+.Dashboard-habits > div {
+	flex: 0 0 150px;
+	height: 150px;
+	text-align: center;
+	border-radius: 100%;
+	background: var(--gradient-blue);
+	margin-right: 30px;
+	box-shadow: var(--box-shadow);
+}
+
+.Dashboard-habits > div > h2 {
+	color: white;
+	margin: 25px 0 0 0;
+	padding: 0;
+	top: 50%;
+	font-size: 60px;
+}
+
+.Dashboard-habits > div > h3 {
+	color: white;
+	margin: 0 0 0 0;
+	padding: 0;
+	font-size: smaller;
+}
+
+.Dashboard-timelog {
+	background: var(--main-white);
+	padding: 30px;
+	border-radius: 30px;
+	width: 400px;
+}
+
+.Dashboard-timelog > table {
+	border-collapse: collapse;
+	border-radius: 15px;
+}
+
+.Dashboard-timelog > table > thead > tr {
+	height: 40px;
+	text-align: left;
+}
+
+.Dashboard-timelog > table > tbody > tr > td {
+	padding: 8px;
+}
+
+.Dashboard-timelog > table > thead > tr > th {
+	padding: 6px;
+	font-weight: strong;
+	font-style: italic;
+	border-bottom: 3px solid var(--main-blue);
+}
+
+.Dashboard-timelog-time {
+	text-align: center;
+	box-shadow: var(--box-shadow-inner);
+	font-weight: bold;
+	border-radius: 4px;
+}
+
+@media screen and (max-width: 500px) {
+	.Dashboard-tasks-map-group > div {
+		flex-direction: column;
+	}
+	.Dashboard-tasks-map-group > div > span {
+		margin: 2px 0 0 2px;
+	}
+	.Dashboard {
+		flex-direction: column;
+	}
+	.Dashboard-tasks {
+		width: auto;
+	}
+}
+
+/* Habits */
+/* Habits */
+.Habits {
+	max-width: 680px;
+}
+
+.Habits-Create {
+	position: fixed;
+	top: 0;
+	left: 0;
+	backdrop-filter: blur(5px);
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.Habits-Create-form {
+	background: var(--main-white);
+	padding: 3vw;
+	border-radius: 20px;
+	box-shadow: var(--box-shadow-lg);
+}
+
+.Habits-Create-form > form > input,
+.Habits-Create-form > form > div {
+	margin: 8px 0 12px 0;
+}
+
+.Habits-list {
+	background: var(--main-white);
+	margin-top: 10px;
+	border-radius: 20px;
+	padding: 10px 24px;
+}
+
+.Habits-list-icons {
+	font-size: 16px;
+	cursor: pointer;
+	margin: 4px 0;
+	padding: 6px;
+	border-radius: 4px;
+	background: var(--secondary-white);
+	box-shadow: var(--box-shadow-inner);
+}
+
+.Habits-list > div > h1 {
+	font-size: 60px;
+	color: var(--main-blue);
+	margin: 0;
+}
+
+.Habits-list > div > h1,
+.Habits-list > div > strong {
+	margin-right: 20px;
+}
+
+/* Tags */
+.Tags {
+	max-width: 680px;
+}
+
+.Tags-Edit {
+	position: fixed;
+	top: 0;
+	left: 0;
+	backdrop-filter: blur(5px);
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.Tags-Edit-form {
+	background: var(--main-white);
+	padding: 3vw;
+	border-radius: 20px;
+	box-shadow: var(--box-shadow-lg);
+	min-width: 320px;
+}
+
+.Tags-Edit-form > form > input,
+.Tags-Edit-form > form > div,
+.Tags-Edit-form > form > textarea,
+.Tags-Edit-form > form > select {
+	margin: 8px 0 12px 0;
+}
+
+.Tags-Edit-form > form > input,
+.Tags-Edit-form > form > textarea,
+.Tags-Edit-form > form > div {
+	min-width: 320px;
+}
+
+.Tags-Tag {
+	background: var(--main-white);
+	padding: 20px;
+	border-radius: 20px;
+	margin-bottom: 10px;
+	color: var(--main-grey);
+}
+
+.Tags-Tag-tag {
+	padding: 4px 6px;
+	background: var(--secondary-white);
+	font-size: 14px;
+	margin: 2px;
+	border-radius: 2px;
+}
+
+/* Tasks */
+.Tasks-Edit {
+	position: fixed;
+	top: 0;
+	left: 0;
+	backdrop-filter: blur(5px);
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.Tasks-Edit-form {
+	background: var(--main-white);
+	padding: 3vw;
+	border-radius: 20px;
+	box-shadow: var(--box-shadow-lg);
+}
+
+.Tasks-Edit-date,
+.Tasks-Edit-status {
+	background: var(--gradient-blue);
+	padding: 3px 6px;
+	color: white;
+	margin-right: 4px;
+	border-radius: 3px;
+	font-size: small;
+	font-weight: bold;
+	min-height: 17px;
+	max-width: 120px;
+	box-shadow: var(--box-shadow);
+	border: none;
+}
+
+.Tasks-Edit-date {
+	max-width: 70px;
+}
+
+.Tasks-Edit-form > form > input,
+.Tasks-Edit-form > form > div,
+.Tasks-Edit-form > form > div > div,
+.Tasks-Edit-form > form > textarea,
+.Tasks-Edit-form > form > select {
+	margin: 8px 0 12px 0;
+}
+
+.Tasks-Edit-form > form > input,
+.Tasks-Edit-form > form > textarea,
+.Tasks-Edit-form > form > div {
+	min-width: 320px;
+}
+
+.Tasks-Kanban {
+	display: flex;
+	margin-top: 30px;
+}
+
+.Tasks-Kanban-col {
+	margin: 0 auto;
+	background: var(--main-white);
+	border-radius: 20px;
+	padding: 1px 20px 20px 20px;
+}
+
+.Tasks-Kanban-col:nth-of-type(4) {
+	margin-right: 0;
+}
+
+.Tasks-Kanban-edit-btn {
+	background: var(--secondary-white);
+	color: var(--main-grey);
+	box-shadow: var(--box-shadow-inner);
+	padding: 6px;
+	margin-left: 10px;
+	border-radius: 8px;
+	cursor: pointer;
+}
+
+.Tasks-Kanban-tag {
+	padding: 2px 4px;
+	background: var(--secondary-white);
+	box-shadow: var(--box-shadow-inner);
+	font-size: 10px;
+	margin: 8px 1px 0 1px;
+	border-radius: 2px;
+}
+
 /* Auth */
 .Auth-form {
 	display: flex;
