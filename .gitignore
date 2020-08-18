@@ -15,3 +15,4 @@ docker-compose.yaml
 
 # Local dev with k8s
 kubernetes-dashboard.yaml
+skaffold*
