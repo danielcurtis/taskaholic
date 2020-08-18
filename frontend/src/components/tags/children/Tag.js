@@ -10,19 +10,21 @@ function Tag({ tag, setEdit, setCurrent }) {
 	let toDo = 0;
 	let completed = 0;
 
-	tag.tasks.map((task) => {
-		task.timelog.map((log) => (time += parseInt(log[1])));
+	for (let i = 0; i < tag.tasks.length; i++) {
+		for (let x = 0; x < tag.tasks[i].timelog.length; x++) {
+			time += tag.tasks[i].timelog[x][1];
+		}
 
 		if (
-			task.status === 'To Do' ||
-			task.status === 'In Progress' ||
-			task.status === 'Paused'
+			tag.tasks[i].status === 'To Do' ||
+			tag.tasks[i].status === 'In Progress' ||
+			tag.tasks[i].status === 'Paused'
 		) {
-			toDo += 1;
-		} else if (task.status === 'Completed') {
-			completed += 1;
+			return (toDo += 1);
+		} else if (tag.tasks[i].status === 'Completed') {
+			return (completed += 1);
 		}
-	});
+	}
 
 	const onEditClick = (id) => {
 		setCurrent(id);

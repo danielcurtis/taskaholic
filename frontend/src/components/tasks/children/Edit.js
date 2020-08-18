@@ -25,7 +25,7 @@ function Edit({ tasks, setEdit, current, update, setUpdate }) {
 
 		try {
 			let arr = [...time];
-			arr = arr.filter((el) => el[1] != 0);
+			arr = arr.filter((el) => el[1] !== 0 || el[1] !== '0');
 
 			await axios.put(`/api/v1/tasks/${current}`, {
 				name: name,

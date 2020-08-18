@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import {
 	AiOutlineBarChart,
 	AiOutlineCheckCircle,
-	AiOutlineClockCircle,
 	AiOutlineFolderOpen,
 	AiOutlineReconciliation,
 	AiOutlineSetting,
