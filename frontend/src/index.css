@@ -204,7 +204,7 @@ a {
 	background: var(--main-white);
 	padding: 5px 40px 40px 40px;
 	border-radius: 30px;
-	margin: 0;
+	margin: 0 15px 0 0;
 }
 
 .Dashboard-tasks-map > h2 {
@@ -243,6 +243,7 @@ a {
 .Dashboard-habits {
 	display: flex;
 	width: 540px;
+	overflow-x: hidden;
 }
 
 .Dashboard-habits > div {
@@ -274,7 +275,8 @@ a {
 	background: var(--main-white);
 	padding: 30px;
 	border-radius: 30px;
-	width: 400px;
+	max-width: 400px;
+	overflow-x: scroll;
 }
 
 .Dashboard-timelog > table {
@@ -303,21 +305,6 @@ a {
 	box-shadow: var(--box-shadow-inner);
 	font-weight: bold;
 	border-radius: 4px;
-}
-
-@media screen and (max-width: 500px) {
-	.Dashboard-tasks-map-group > div {
-		flex-direction: column;
-	}
-	.Dashboard-tasks-map-group > div > span {
-		margin: 2px 0 0 2px;
-	}
-	.Dashboard {
-		flex-direction: column;
-	}
-	.Dashboard-tasks {
-		width: auto;
-	}
 }
 
 /* Habits */
@@ -687,15 +674,27 @@ a {
 	.Tasks-Kanban-list {
 		width: 100%;
 	}
+	.Dashboard {
+		flex-direction: column;
+	}
+	.Dashboard-tasks {
+		width: auto;
+		margin: 0;
+	}
 }
 
 @media screen and (max-width: 700px) {
 	.Menu {
-		width: 100%;
+		width: 100vw;
 		height: auto;
 		position: relative;
 		display: flex;
 		flex-direction: row;
+		justify-content: space-between;
+		padding: 10px 0px 10px 20px;
+	}
+	.Menu-item-active {
+		border-radius: 8px 0px 0px 8px;
 	}
 	.Main {
 		margin-left: 0;
@@ -704,9 +703,24 @@ a {
 	.Settings-forms {
 		flex-direction: column;
 	}
+	.Dashboard-header {
+		flex-direction: column;
+		justify-content: left;
+		align-content: left;
+		text-align: left;
+	}
 	.Settings-password,
 	.Settings-details {
 		margin-right: 0;
+	}
+}
+
+@media screen and (max-width: 500px) {
+	.Dashboard-tasks-map-group > div {
+		flex-direction: column;
+	}
+	.Dashboard-tasks-map-group > div > span {
+		margin: 2px 0 0 2px;
 	}
 }
 

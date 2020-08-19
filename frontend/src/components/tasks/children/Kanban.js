@@ -116,7 +116,7 @@ function Kanban({ tasks, update, setUpdate, setEdit, setCurrent }) {
 			<div className="Tasks-Kanban">
 				<DragDropContext onDragEnd={onDragEnd}>
 					{state.map((el, ind) => (
-						<div className="Tasks-Kanban-col">
+						<div key={ind} className="Tasks-Kanban-col">
 							<h2>{titles[ind]}</h2>
 							<Droppable key={ind} droppableId={`${ind}`}>
 								{(provided, snapshot) => (
