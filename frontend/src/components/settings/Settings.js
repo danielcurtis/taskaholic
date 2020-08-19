@@ -23,7 +23,12 @@ function Settings() {
 
 	return (
 		<div className="Settings">
-			<h1>Settings</h1>
+			<h1
+				style={{
+					fontFamily: `Shrikhand`,
+				}}>
+				Settings
+			</h1>
 			<p>
 				As a Beta user, you drive the Taskaholic product. Contact us for support
 				or suggestions.

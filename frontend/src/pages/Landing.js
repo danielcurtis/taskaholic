@@ -20,7 +20,12 @@ function Landing() {
 			<div className="Landing-box">
 				<div className="Landing-brand">
 					<img src={Icon} alt="clock" />
-					<h1>Taskaholic</h1>
+					<h1
+						style={{
+							fontFamily: `Shrikhand`,
+						}}>
+						Taskaholic
+					</h1>
 				</div>
 				<h2>Individual task and time tracking for productivity fanatics.</h2>
 				{toggle ? (

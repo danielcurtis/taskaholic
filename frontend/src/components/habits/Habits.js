@@ -38,7 +38,12 @@ function Habits() {
 	return (
 		<div className="Habits">
 			<div className="flex">
-				<h1>Habits</h1>
+				<h1
+					style={{
+						fontFamily: `Shrikhand`,
+					}}>
+					Habits
+				</h1>
 				<button onClick={() => setCreate(true)}>Create Habit</button>
 			</div>
 

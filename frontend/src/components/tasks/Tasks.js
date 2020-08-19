@@ -31,7 +31,12 @@ function Tasks() {
 		return (
 			<div className="Tasks">
 				<div className="flex">
-					<h1>Tasks</h1>
+					<h1
+						style={{
+							fontFamily: `Shrikhand`,
+						}}>
+						Tasks
+					</h1>
 					<button onClick={() => setCreate(true)}>Create Task</button>
 				</div>
 				<Meter arr={tasks} />
