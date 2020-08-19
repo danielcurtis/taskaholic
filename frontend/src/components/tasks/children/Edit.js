@@ -34,8 +34,9 @@ function Edit({ tasks, setEdit, current, update, setUpdate }) {
 				description: desc,
 				status: stat,
 			});
-			setEdit(false);
+
 			setUpdate(update + 1);
+			setEdit(false);
 		} catch (error) {
 			console.log(`Edit task error: ${error.message}`);
 			setErr('Uh oh. Check your Internet and refresh.');

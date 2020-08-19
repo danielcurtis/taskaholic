@@ -1,6 +1,6 @@
 // @ts-check
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { AiFillClockCircle, AiFillCalendar, AiFillTag } from 'react-icons/ai';
@@ -48,6 +48,21 @@ function Kanban({ tasks, update, setUpdate, setEdit, setCurrent }) {
 		completed(tasks),
 		paused(tasks),
 	]);
+
+	useEffect(() => {
+		const getTasks = async () => {
+			const { data } = await axios.get('/api/v1/tasks');
+
+			setState([
+				toDo(data.data),
+				inProgress(data.data),
+				completed(data.data),
+				paused(data.data),
+			]);
+		};
+
+		getTasks();
+	}, [update]);
 
 	const titles = ['To Do', 'In Progress', 'Completed', 'Paused'];
 
