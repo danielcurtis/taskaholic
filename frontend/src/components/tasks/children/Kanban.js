@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+// @ts-check
+
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { AiFillClockCircle, AiFillCalendar, AiFillTag } from 'react-icons/ai';
@@ -38,12 +40,6 @@ const getItemStyle = (isDragging, draggableStyle) => ({
 	...draggableStyle,
 });
 
-const getListStyle = (isDraggingOver) => ({
-	// background: isDraggingOver ? 'var(--main-blue)' : 'var(--secondary-white)',
-	minWidth: 230,
-	height: '80%',
-});
-
 function Kanban({ tasks, update, setUpdate, setEdit, setCurrent }) {
 	const [err, setErr] = useState('');
 	const [state, setState] = useState([
@@ -52,6 +48,21 @@ function Kanban({ tasks, update, setUpdate, setEdit, setCurrent }) {
 		completed(tasks),
 		paused(tasks),
 	]);
+
+	useEffect(() => {
+		const getTasks = async () => {
+			const { data } = await axios.get('/api/v1/tasks');
+
+			setState([
+				toDo(data.data),
+				inProgress(data.data),
+				completed(data.data),
+				paused(data.data),
+			]);
+		};
+
+		getTasks();
+	}, [update]);
 
 	const titles = ['To Do', 'In Progress', 'Completed', 'Paused'];
 
@@ -110,8 +121,8 @@ function Kanban({ tasks, update, setUpdate, setEdit, setCurrent }) {
 							<Droppable key={ind} droppableId={`${ind}`}>
 								{(provided, snapshot) => (
 									<div
+										className="Tasks-Kanban-list"
 										ref={provided.innerRef}
-										style={getListStyle(snapshot.isDraggingOver)}
 										{...provided.droppableProps}>
 										{el.map((item, index) => {
 											let time = 0;

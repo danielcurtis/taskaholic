@@ -20,9 +20,9 @@ function Tag({ tag, setEdit, setCurrent }) {
 			tag.tasks[i].status === 'In Progress' ||
 			tag.tasks[i].status === 'Paused'
 		) {
-			return (toDo += 1);
+			toDo += 1;
 		} else if (tag.tasks[i].status === 'Completed') {
-			return (completed += 1);
+			completed += 1;
 		}
 	}
 

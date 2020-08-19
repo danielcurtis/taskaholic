@@ -39,7 +39,7 @@ function Habits() {
 		<div className="Habits">
 			<div className="flex">
 				<h1>Habits</h1>
-				<button onClick={() => setCreate(true)}>New Habit</button>
+				<button onClick={() => setCreate(true)}>Create Habit</button>
 			</div>
 
 			{habits.map((el, i) => {
