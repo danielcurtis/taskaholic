@@ -10,6 +10,9 @@ function Landing() {
 
 	return (
 		<div className="Landing">
+			<div className="Landing-ribbon-wrap">
+				<div className="Landing-ribbon-text">Beta</div>
+			</div>
 			<div className="Landing-box">
 				<div className="Landing-brand">
 					<img src={Icon} alt="clock" />
