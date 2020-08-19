@@ -462,13 +462,19 @@ a {
 .Tasks-Kanban {
 	display: flex;
 	margin-top: 30px;
+	justify-content: space-between;
 }
 
 .Tasks-Kanban-col {
-	margin: 0 auto;
+	margin: 0;
 	background: var(--main-white);
 	border-radius: 20px;
 	padding: 1px 20px 20px 20px;
+}
+
+.Tasks-Kanban-list {
+	height: 80%;
+	width: 14vw;
 }
 
 .Tasks-Kanban-col:nth-of-type(4) {
@@ -638,6 +644,18 @@ a {
 }
 
 /* Media Queries */
+@media screen and (max-width: 1300px) {
+	.Tasks-Kanban {
+		flex-direction: column;
+	}
+	.Tasks-Kanban-col {
+		margin-bottom: 20px;
+	}
+	.Tasks-Kanban-list {
+		width: 100%;
+	}
+}
+
 @media screen and (max-width: 700px) {
 	.Menu {
 		width: 100%;

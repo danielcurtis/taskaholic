@@ -1,3 +1,5 @@
+// @ts-check
+
 import React, { useState } from 'react';
 import axios from 'axios';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
@@ -36,12 +38,6 @@ const getItemStyle = (isDragging, draggableStyle) => ({
 	marginBottom: isDragging ? 0 : 20,
 	// styles to apply on draggables
 	...draggableStyle,
-});
-
-const getListStyle = (isDraggingOver) => ({
-	// background: isDraggingOver ? 'var(--main-blue)' : 'var(--secondary-white)',
-	minWidth: 230,
-	height: '80%',
 });
 
 function Kanban({ tasks, update, setUpdate, setEdit, setCurrent }) {
@@ -110,8 +106,8 @@ function Kanban({ tasks, update, setUpdate, setEdit, setCurrent }) {
 							<Droppable key={ind} droppableId={`${ind}`}>
 								{(provided, snapshot) => (
 									<div
+										className="Tasks-Kanban-list"
 										ref={provided.innerRef}
-										style={getListStyle(snapshot.isDraggingOver)}
 										{...provided.droppableProps}>
 										{el.map((item, index) => {
 											let time = 0;
