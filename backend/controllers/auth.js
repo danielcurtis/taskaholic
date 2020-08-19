@@ -115,17 +115,16 @@ exports.forgotPassword = asyncHandler(async (req, res, next) => {
 
 	await user.save({ validateBeforeSave: false });
 
-	// Create reset url
-	const resetUrl = `${req.protocol}://${req.get(
-		'host'
-	)}/api/v1/auth/resetpassword/${resetToken}`;
-
-	const message = `To reset your forgotten password, please make a PUT request to \n\n ${resetUrl}`;
+	const message =
+		`You are recieving this message because you or somebody else attempted to reset your password \n\n` +
+		`If this was you, please return to Taskaholic and use this temporary password: ${resetToken}\n\n` +
+		`If this was NOT you, please ignore this message. \n\n` +
+		`Taskaholic Support`;
 
 	try {
 		await sendEmail({
 			email: user.email,
-			subject: 'Password reset token',
+			subject: 'Password Reset Instructions',
 			message,
 		});
 

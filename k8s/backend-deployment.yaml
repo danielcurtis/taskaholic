@@ -17,8 +17,8 @@ spec:
           image: curtiscodes/taskaholic-backend
           resources:
             limits:
-              memory: '128Mi'
-              cpu: '500m'
+              memory: "128Mi"
+              cpu: "500m"
           ports:
             - containerPort: 5000
           env:
@@ -26,7 +26,7 @@ spec:
             - name: NODE_ENV
               value: production
             - name: PORT
-              value: '5000'
+              value: "5000"
             # MongoDB
             - name: MONGO_INITDB_DATABASE
               valueFrom:
@@ -52,11 +52,14 @@ spec:
             - name: JWT_EXPIRE
               value: 30d
             - name: JWT_COOKIE_EXPIRE
-              value: '30'
+              value: "30"
             # Email service
-            - name: FROM_EMAIL
-              value: support@taskaholic.com
-            - name: FROM_NAME
-              value: Daniel at Taskaholic
+            - name: EMAIL_ADDRESS
+              value: contacttaskaholic@gmail.com
+            - name: EMAIL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: emailpassword
+                  key: EMAIL_PASSWORD
       imagePullSecrets:
         - name: regsecret
