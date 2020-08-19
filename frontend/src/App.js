@@ -1,6 +1,6 @@
 // @ts-check
 
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { UserContext } from './context/User';
 import Home from './pages/Home';
 import Landing from './pages/Landing';
