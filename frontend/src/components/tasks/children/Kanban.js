@@ -154,9 +154,7 @@ function Kanban({ tasks, update, setUpdate, setEdit, setCurrent }) {
 
 															<small>{item.description}</small>
 
-															<div
-																className="grey flex"
-																style={{ justifyContent: 'left' }}>
+															<div className="Tasks-Kanban-tag-wrap">
 																<div className="Tasks-Kanban-tag">
 																	<AiFillClockCircle
 																		style={{

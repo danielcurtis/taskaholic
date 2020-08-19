@@ -516,12 +516,19 @@ a {
 	cursor: pointer;
 }
 
+.Tasks-Kanban-tag-wrap {
+	display: flex;
+	justify-content: left;
+	flex-wrap: wrap;
+	color: var(--main-grey);
+}
+
 .Tasks-Kanban-tag {
 	padding: 2px 4px;
 	background: var(--secondary-white);
 	box-shadow: var(--box-shadow-inner);
 	font-size: 10px;
-	margin: 8px 1px 0 1px;
+	margin: 8px 5px 0px 0px;
 	border-radius: 2px;
 }
 
