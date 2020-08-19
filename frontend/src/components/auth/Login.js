@@ -24,7 +24,8 @@ function Login({ toggle, setToggle }) {
 		}
 	};
 
-	const handleLogin = async () => {
+	const handleLogin = async (e) => {
+		e.preventDefault();
 		setBtn('Loading...');
 		await login(email, password);
 		setBtn('Log In');
@@ -40,7 +41,7 @@ function Login({ toggle, setToggle }) {
 
 	return (
 		<div>
-			<div className="Auth-form">
+			<form className="Auth-form" onSubmit={handleLogin}>
 				<label>Email:</label>
 				<input
 					type="email"
@@ -54,17 +55,18 @@ function Login({ toggle, setToggle }) {
 				<input
 					type="password"
 					required={true}
+					minLength={8}
 					onChange={(e) => {
 						setPassword(e.target.value);
 					}}
 				/>
 				<div>
 					<button onClick={() => setToggle(!toggle)}>Sign Up</button>
-					<button className="Auth-form-btn" onClick={handleLogin}>
+					<button className="Auth-form-btn" type="submit">
 						{btn}
 					</button>
 				</div>
-			</div>
+			</form>
 			{err}
 		</div>
 	);

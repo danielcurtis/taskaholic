@@ -21,7 +21,8 @@ function Signup({ toggle, setToggle }) {
 		</p>
 	);
 
-	const handleSignup = async () => {
+	const handleSignup = async (e) => {
+		e.preventDefault();
 		setBtn('Loading...');
 		await signup(name, email, password);
 		setBtn('Sign Up');
@@ -29,11 +30,12 @@ function Signup({ toggle, setToggle }) {
 	};
 
 	return (
-		<div className="Auth-form">
+		<form className="Auth-form" onSubmit={handleSignup}>
 			<label>Name:</label>
 			<input
 				type="text"
 				required={true}
+				minLength={1}
 				placeholder="Jane Doe"
 				onChange={(e) => {
 					setName(e.target.value);
@@ -59,12 +61,12 @@ function Signup({ toggle, setToggle }) {
 			/>
 			<div>
 				<button onClick={() => setToggle(!toggle)}>Cancel</button>
-				<button className="Auth-form-btn" onClick={handleSignup}>
+				<button className="Auth-form-btn" type="submit">
 					{btn}
 				</button>
 			</div>
 			{msg}
-		</div>
+		</form>
 	);
 }
 
