@@ -36,7 +36,7 @@ function Tag({ tag, setEdit, setCurrent }) {
 			<div className="flex">
 				<strong>{tag.name}</strong>
 				<FaPencilAlt
-					className="Tasks-kanban-edit-btn"
+					className="Tasks-Kanban-edit-btn"
 					onClick={() => onEditClick(tag.id)}
 				/>
 			</div>
