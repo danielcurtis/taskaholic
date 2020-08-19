@@ -1,6 +1,6 @@
 // @ts-check
 
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 
 function ResetPassword() {
