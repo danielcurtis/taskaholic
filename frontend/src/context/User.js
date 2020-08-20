@@ -83,7 +83,7 @@ const UserProvider = ({ children }) => {
 			});
 
 			await axios.post('/api/v1/habits', {
-				name: 'Meditate',
+				name: 'Wear Mask',
 				streak: 6,
 			});
 
@@ -104,7 +104,7 @@ const UserProvider = ({ children }) => {
 			await axios.post('/api/v1/tags', {
 				name: 'SIDEPROJECT',
 				due: new Date(),
-				description: 'Tag to track side project.',
+				description: 'Tag to track side project tasks.',
 				status: 'In Progress',
 			});
 
