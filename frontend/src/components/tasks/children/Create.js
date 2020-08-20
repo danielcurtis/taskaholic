@@ -5,7 +5,7 @@ import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
-function Create({ setCreate }) {
+function Create({ setCreate, update, setUpdate }) {
 	const [tags, setTags] = useState([]);
 	const [tag, setTag] = useState('Select a value');
 	const [name, setName] = useState('');
@@ -41,6 +41,7 @@ function Create({ setCreate }) {
 				status: stat,
 			});
 
+			setUpdate(update + 1);
 			setCreate(false);
 		} catch (error) {
 			console.log(`Create task error: ${error.message}`);

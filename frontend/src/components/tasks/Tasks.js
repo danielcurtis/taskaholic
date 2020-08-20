@@ -47,7 +47,9 @@ function Tasks() {
 					setEdit={setEdit}
 					setCurrent={setCurrent}
 				/>
-				{create ? <Create setCreate={setCreate} /> : null}
+				{create ? (
+					<Create setCreate={setCreate} update={update} setUpdate={setUpdate} />
+				) : null}
 				{edit ? (
 					<Edit
 						tasks={tasks}
