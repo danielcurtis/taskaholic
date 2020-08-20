@@ -10,7 +10,7 @@ function Edit({ tasks, setEdit, current, update, setUpdate }) {
 
 	// Get inital total hours
 	let initTotal = 0;
-	task.timelog.map((el) => (initTotal += parseInt(el[1])));
+	task.timelog.map((el) => (initTotal += parseFloat(el[1])));
 
 	const [name, setName] = useState(task.name);
 	const [due, setDue] = useState(new Date(task.due));
@@ -62,7 +62,7 @@ function Edit({ tasks, setEdit, current, update, setUpdate }) {
 		let arr = [...time];
 		let tot = 0;
 		arr.push([new Date(), 0]);
-		arr.map((i) => (tot += parseInt(i[1])));
+		arr.map((i) => (tot += parseFloat(i[1])));
 
 		setTime(arr);
 		setTotal(tot);

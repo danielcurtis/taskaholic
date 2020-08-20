@@ -12,7 +12,7 @@ function Tag({ tag, setEdit, setCurrent }) {
 
 	for (let i = 0; i < tag.tasks.length; i++) {
 		for (let x = 0; x < tag.tasks[i].timelog.length; x++) {
-			time += parseInt(tag.tasks[i].timelog[x][1]);
+			time += parseFloat(tag.tasks[i].timelog[x][1]);
 		}
 
 		if (

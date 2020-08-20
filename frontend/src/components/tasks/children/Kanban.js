@@ -126,7 +126,7 @@ function Kanban({ tasks, update, setUpdate, setEdit, setCurrent }) {
 										{...provided.droppableProps}>
 										{el.map((item, index) => {
 											let time = 0;
-											item.timelog.map((el) => (time += parseInt(el[1])));
+											item.timelog.map((el) => (time += parseFloat(el[1])));
 
 											return (
 												<Draggable
