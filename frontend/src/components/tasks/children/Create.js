@@ -71,7 +71,11 @@ function Create({ setCreate, update, setUpdate }) {
 
 					<label>Due:</label>
 					<br />
-					<DatePicker selected={due} onChange={(d) => setDue(d)} />
+					<DatePicker
+						required={true}
+						selected={due}
+						onChange={(d) => setDue(d)}
+					/>
 					<br />
 
 					<label>Tag:</label>
