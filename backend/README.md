@@ -2,6 +2,15 @@
 
 Backend API built with NodeJS, Express, and MongoDB.
 
+## Local Development
+
+To access the Wiki, run `npm run dev` and visit it at [http://localhost:5000](http://localhost:5000)
+
+It's recommended to use the development instructions for the entire repo. However, if you need to run just the backend, the following scripts are available:
+
+- `npm run start`
+- `npm run dev`
+
 ## Contributing
 
 #### File structure
@@ -34,11 +43,9 @@ The backend is laid out in 8 directories and the server.js file.
 
 #### GitHub Workflow
 
-1. Create a feature branch off of dev named "feature/describe-feature"
+1. Create a feature branch off of main named "feature/describe-feature"
 2. Make changes
 3. Dynamically test changes
 4. Update documentation if needed
-5. Create a Pull Request to dev
-6. Changes will be reviewed, statically tested, and merged into dev
-7. Changes will be live on the dev server
-8. Changes will be merged into main (production) with the next release
+5. Create a Pull Request to main
+6. Changes will be reviewed, statically tested, and merged into main
