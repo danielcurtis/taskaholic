@@ -108,7 +108,6 @@ function Edit({ tasks, setEdit, current, update, setUpdate }) {
 					<label>Description:</label>
 					<br />
 					<textarea
-						required={true}
 						maxLength={500}
 						minLength={1}
 						value={desc}

@@ -65,7 +65,6 @@ function Create({ setCreate, update, setUpdate }) {
 					<label>Description:</label>
 					<br />
 					<textarea
-						required={true}
 						value={desc}
 						onChange={(e) => setDesc(e.target.value)}></textarea>
 					<br />
