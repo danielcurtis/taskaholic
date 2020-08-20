@@ -31,7 +31,12 @@ function Tasks() {
 		return (
 			<div className="Tasks">
 				<div className="flex">
-					<h1>Tasks</h1>
+					<h1
+						style={{
+							fontFamily: `Shrikhand`,
+						}}>
+						Tasks
+					</h1>
 					<button onClick={() => setCreate(true)}>Create Task</button>
 				</div>
 				<Meter arr={tasks} />
@@ -42,7 +47,9 @@ function Tasks() {
 					setEdit={setEdit}
 					setCurrent={setCurrent}
 				/>
-				{create ? <Create setCreate={setCreate} /> : null}
+				{create ? (
+					<Create setCreate={setCreate} update={update} setUpdate={setUpdate} />
+				) : null}
 				{edit ? (
 					<Edit
 						tasks={tasks}

@@ -1,10 +1,10 @@
-# Taskaholic
+# Taskaholic v1.0.0
 
-A to-do web app with categories and time-tracking built in for task oriented individuals.
+A to-do web app with categories and time-tracking built in for task oriented individuals. [Taskaholic.com](https://www.taskaholic.com)
 
 ## Local Development
 
-You can use Kubernetes or Docker Compose for local development. Docker requires less set up, but Kubernetes reflects the production environment on Google Cloud.
+You can use Kubernetes or Docker Compose for local development. Docker Compose requires less set up, but Kubernetes reflects the production environment on Google Cloud.
 
 ### Initial Requirements
 
@@ -16,17 +16,20 @@ You can use Kubernetes or Docker Compose for local development. Docker requires 
 
 1. Create the following secrets in **/backend/config/config.env**
 
-```
+```yaml
 NODE_ENV=development
 PORT=5000
 
-MONGO_INITDB_DATABASE=
+# Retrieve from LastPass Encrypted Storage
 MONGO_INITDB_ROOT_USERNAME=
 MONGO_INITDB_ROOT_PASSWORD=
 
 JWT_SECRET=
 JWT_EXPIRE=30d
 JWT_COOKIE_EXPIRE=30
+
+EMAIL_ADDRESS=contacttaskaholic@gmail.com
+EMAIL_PASSWORD=
 ```
 
 2. Copy **docker-compose.yaml**, **kubernetes-dashboard.yaml**, and **nginx** from the **realease/aws-elastic-beanstalk** branch
@@ -48,6 +51,8 @@ MONGO_INITDB_ROOT_PASSWORD # mongopassword
 MONGO_INITDB_DATABASE # mongodatabase
 
 JWT_SECRET # jwtsecret
+
+EMAIL_PASSWORD= # emailpassword
 ```
 
 Create the above secrets with the command below, where value is the secret.
@@ -122,31 +127,6 @@ The dashboard should be live at [http://localhost:8001/api/v1/namespaces/kube-sy
 - Allow CORS (for development) with `cors`
 - Cookies used for auth token with CSRF protection with `csurf`
 
-## Project Management
+## Contributing
 
-Taskaholic uses the product itself, GitHub Projects, this README for an "agile-like" project management environment.
-
-The following projects are planned to get to v1.0:
-
-- [ ] UI API Integration
-- [ ] Desktop UI
-- [ ] Responsive UI
-- [ ] Docker Pipeline
-- [ ] Business (email, analytics, etc.)
-- [ ] QA
-
-### Roadmap v1.0
-
-**Business Logic:**
-
-- [ ] CRUD Users
-- [ ] CRUD Habits, Tasks, and Tags
-- [ ] CRUD Time tracking
-- [ ] Helpful Dashboard
-- [ ] Fully responsive
-
-**Application Logic:**
-
-- [ ] CI/CD Pipeline with Docker & Kubernetes
-- [ ] Fast lighthouse score
-- [ ] Robust security
+Read the README's in the frontend and backend directories for info on contributing. Kubernetes configuration should not be changed unless you're prepared to break the production configuration!

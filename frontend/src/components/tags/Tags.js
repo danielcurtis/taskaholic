@@ -25,7 +25,12 @@ function Tags() {
 	return (
 		<div className="Tags">
 			<div className="flex">
-				<h1>Tags</h1>
+				<h1
+					style={{
+						fontFamily: `Shrikhand`,
+					}}>
+					Tags
+				</h1>
 				<button onClick={() => setCreate(true)}>Create Tag</button>
 			</div>
 

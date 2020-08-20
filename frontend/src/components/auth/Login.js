@@ -3,6 +3,7 @@
 import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { UserContext } from '../../context/User';
+import ResetPassword from './ResetPassword';
 
 function Login({ toggle, setToggle }) {
 	const { login } = useContext(UserContext);
@@ -10,17 +11,20 @@ function Login({ toggle, setToggle }) {
 	const [password, setPassword] = useState('');
 	const [btn, setBtn] = useState('Log In');
 	const [err, setErr] = useState(null);
+	const [reset, setReset] = useState(false);
 
 	const handleReset = async () => {
 		try {
+			setErr(<p>Loading...</p>);
 			await axios.post('/api/v1/auth/forgotpassword', {
 				email: email,
 			});
 
-			setErr(<p>Please, check your email for reset instructions.</p>);
+			setErr(<p>Check your email for instructions. Be sure to check spam!</p>);
+			setReset(true);
 		} catch (err) {
 			console.log(`Reset password error ${err}`);
-			setErr(<p>Error: Please, check your email address.</p>);
+			setErr(<p>It doesn't look like that email exists. Try signing up!</p>);
 		}
 	};
 
@@ -68,6 +72,7 @@ function Login({ toggle, setToggle }) {
 				</div>
 			</form>
 			{err}
+			{reset ? <ResetPassword /> : null}
 		</div>
 	);
 }

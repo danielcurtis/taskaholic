@@ -5,16 +5,15 @@ const nodemailer = require('nodemailer');
 
 const sendEmail = async (options) => {
 	const transporter = nodemailer.createTransport({
-		host: process.env.SMTP_HOST,
-		port: process.env.SMTP_PORT,
+		service: 'gmail',
 		auth: {
-			user: process.env.SMTP_EMAIL,
-			pass: process.env.SMTP_PASSWORD,
+			user: process.env.EMAIL_ADDRESS,
+			pass: process.env.EMAIL_PASSWORD,
 		},
 	});
 
 	const message = {
-		from: `${process.env.FROM_NAME} <${process.env.FROM_EMAIL}>`,
+		from: `Taskaholic Support <${process.env.EMAIL_ADDRESS}>`,
 		to: options.email,
 		subject: options.subject,
 		text: options.message,

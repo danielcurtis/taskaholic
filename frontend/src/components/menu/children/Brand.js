@@ -5,7 +5,12 @@ function Brand() {
 	return (
 		<div className="Menu-brand">
 			<img src={Icon} alt="clock" />
-			<h1>Taskaholic</h1>
+			<h1
+				style={{
+					fontFamily: `Shrikhand`,
+				}}>
+				Taskaholic
+			</h1>
 		</div>
 	);
 }

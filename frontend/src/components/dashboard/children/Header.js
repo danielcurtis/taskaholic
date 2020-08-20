@@ -37,7 +37,7 @@ function Header() {
 				style={{
 					fontFamily: `Shrikhand, cursive`,
 				}}>{`${greeting} ${name}`}</h1>
-			<div style={{ display: 'flex', alignItems: 'center' }}>
+			<div className="flex">
 				<span>{months[date.getMonth()]}</span>
 				<h1
 					style={{

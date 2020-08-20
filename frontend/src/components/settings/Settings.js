@@ -23,15 +23,20 @@ function Settings() {
 
 	return (
 		<div className="Settings">
-			<h1>Settings</h1>
+			<h1
+				style={{
+					fontFamily: `Shrikhand`,
+				}}>
+				Settings
+			</h1>
 			<p>
-				As a Beta user, you drive the Taskaholic product. Contact us for support
-				or suggestions.
+				Thanks for being a Beta user! If you have any questions or suggestions,
+				don't hesitate to email us!
 			</p>
 			<button className="blue-btn" onClick={logout}>
 				Log out
 			</button>
-			<a href="mailto:support@taskaholic.com">
+			<a href="mailto:contacttaskaholic@gmail.com">
 				<button>Email Us</button>
 			</a>
 			{loading ? null : (
@@ -40,6 +45,16 @@ function Settings() {
 					<Password user={user} />
 				</div>
 			)}
+			<h2>Feature Roadmap:</h2>
+			<ul style={{ marginBottom: 30 }}>
+				<li>Color Coded Tags</li>
+				<li>Calendar Time View</li>
+				<li>GitHub Integration</li>
+				<li>Archive Option for Tasks</li>
+				<li>Sortable Tasks & Tags</li>
+				<li>Updated Mobile UI</li>
+			</ul>
+			<strong>Current version: v1.0.0 Beta</strong>
 			<p>
 				<a
 					href="https://docs.google.com/document/d/1h6rzrxmi0X2RLjMRX1IEB1U0orxDM7u8tvg86InHD1k/edit?usp=sharing"

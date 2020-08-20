@@ -116,7 +116,7 @@ function Kanban({ tasks, update, setUpdate, setEdit, setCurrent }) {
 			<div className="Tasks-Kanban">
 				<DragDropContext onDragEnd={onDragEnd}>
 					{state.map((el, ind) => (
-						<div className="Tasks-Kanban-col">
+						<div key={ind} className="Tasks-Kanban-col">
 							<h2>{titles[ind]}</h2>
 							<Droppable key={ind} droppableId={`${ind}`}>
 								{(provided, snapshot) => (
@@ -126,7 +126,7 @@ function Kanban({ tasks, update, setUpdate, setEdit, setCurrent }) {
 										{...provided.droppableProps}>
 										{el.map((item, index) => {
 											let time = 0;
-											item.timelog.map((el) => (time += parseInt(el[1])));
+											item.timelog.map((el) => (time += parseFloat(el[1])));
 
 											return (
 												<Draggable
@@ -154,9 +154,7 @@ function Kanban({ tasks, update, setUpdate, setEdit, setCurrent }) {
 
 															<small>{item.description}</small>
 
-															<div
-																className="grey flex"
-																style={{ justifyContent: 'left' }}>
+															<div className="Tasks-Kanban-tag-wrap">
 																<div className="Tasks-Kanban-tag">
 																	<AiFillClockCircle
 																		style={{

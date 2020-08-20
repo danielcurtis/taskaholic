@@ -12,7 +12,7 @@ function Tag({ tag, setEdit, setCurrent }) {
 
 	for (let i = 0; i < tag.tasks.length; i++) {
 		for (let x = 0; x < tag.tasks[i].timelog.length; x++) {
-			time += tag.tasks[i].timelog[x][1];
+			time += parseFloat(tag.tasks[i].timelog[x][1]);
 		}
 
 		if (
@@ -36,7 +36,7 @@ function Tag({ tag, setEdit, setCurrent }) {
 			<div className="flex">
 				<strong>{tag.name}</strong>
 				<FaPencilAlt
-					className="Tasks-kanban-edit-btn"
+					className="Tasks-Kanban-edit-btn"
 					onClick={() => onEditClick(tag.id)}
 				/>
 			</div>
