@@ -50,7 +50,11 @@ function Settings() {
 				<li>Color Coded Tags</li>
 				<li>Calendar Time View</li>
 				<li>GitHub Integration</li>
+				<li>Archive Option for Tasks</li>
+				<li>Sortable Tasks & Tags</li>
+				<li>Updated Mobile UI</li>
 			</ul>
+			<strong>Current version: v1.0.0 Beta</strong>
 			<p>
 				<a
 					href="https://docs.google.com/document/d/1h6rzrxmi0X2RLjMRX1IEB1U0orxDM7u8tvg86InHD1k/edit?usp=sharing"
