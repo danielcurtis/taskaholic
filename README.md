@@ -20,9 +20,9 @@ You can use Kubernetes or Docker Compose for local development. Docker Compose r
 NODE_ENV=development
 PORT=5000
 
-# Retrieve from LastPass Encrypted Storage
 MONGO_INITDB_ROOT_USERNAME=
 MONGO_INITDB_ROOT_PASSWORD=
+MONGO_INITDB_DATABASE=
 
 JWT_SECRET=
 JWT_EXPIRE=30d
