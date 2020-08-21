@@ -2,23 +2,22 @@
 
 import React, { useState } from 'react';
 import {
-	AiOutlineBarChart,
-	AiOutlineCheckCircle,
-	AiOutlineFolderOpen,
-	AiOutlineReconciliation,
-	AiOutlineSetting,
-} from 'react-icons/ai';
+	HiTemplate,
+	HiCheckCircle,
+	HiChartBar,
+	HiFolder,
+	HiCog,
+} from 'react-icons/hi';
 import Brand from './children/Brand';
 
 function Menu({ setView }) {
 	// Top-level components
-	const listData = ['Dashboard', 'Tasks', 'Tags', 'Habits', 'Settings'];
+	const listData = ['Dashboard', 'Tasks', 'Tags', 'Habits'];
 	const listIcons = [
-		<AiOutlineReconciliation />,
-		<AiOutlineCheckCircle />,
-		<AiOutlineFolderOpen />,
-		<AiOutlineBarChart />,
-		<AiOutlineSetting />,
+		<HiTemplate size={'1.5em'} />,
+		<HiCheckCircle size={'1.5em'} />,
+		<HiFolder size={'1.5em'} />,
+		<HiChartBar size={'1.5em'} />,
 	];
 
 	// Track active component
@@ -41,12 +40,20 @@ function Menu({ setView }) {
 							id={el}
 							className={active === i ? 'Menu-item-active' : 'Menu-item'}
 							onClick={() => updateactive(i, el)}>
-							<span aria-labelledby={el}>{listIcons[i]}</span>
-							<div>{el}</div>
+							{listIcons[i]}
 						</li>
 					);
 				})}
 			</ul>
+			<HiCog
+				size={'1.5em'}
+				onClick={() => updateactive(4, 'Settings')}
+				className={
+					active === 4
+						? 'Menu-item-active Menu-settings'
+						: 'Menu-item Menu-settings'
+				}
+			/>
 		</div>
 	);
 }

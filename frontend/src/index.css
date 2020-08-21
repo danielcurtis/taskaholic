@@ -1,7 +1,7 @@
 /* Global Styles */
 /* Variables */
 :root {
-	--main-blue: #007aff;
+	--main-blue: #003cffb3;
 	--secondary-blue: #6594d7;
 	--main-red: #ec1416;
 	--secondary-red: #b0172b;
@@ -13,9 +13,9 @@
 	--main-white: #fbfbfd;
 	--secondary-white: #f0f0f2;
 	--gradient-white: linear-gradient(135deg, #f0f0f2 0%, #e7e7e7 100%);
-	--gradient-blue: linear-gradient(309deg, #0011ff 0%, #1481ff 100%);
+	--gradient-blue: linear-gradient(309deg, #003cffb3 0%, #1481ff 100%);
 	--gradient-sunset: linear-gradient(339deg, #ec1416b3 0%, #003cffb3 100%);
-	--gradient-blue-lin: linear-gradient(180deg, #1481ff 0%, #0011ff 100%);
+	--gradient-blue-lin: linear-gradient(180deg, #1481ff 30%, #003cffb3 100%);
 	--gradient-red-lin: linear-gradient(180deg, #ec1416 0%, #b0172b 100%);
 	--gradient-green-lin: linear-gradient(180deg, #58d188 0%, #359d5e 100%);
 	--gradient-grey-lin: linear-gradient(180deg, #36456b 0%, #1a243c 100%);
@@ -116,9 +116,9 @@ a {
 /* Pages */
 /* Home */
 .Main {
-	margin-left: 300px;
-	padding: 25px 75px 25px 25px;
-	max-width: 1300px;
+	margin-left: 115px;
+	padding: 25px;
+	max-width: 1400px;
 }
 
 /* Landing */
@@ -571,11 +571,12 @@ a {
 .Menu {
 	margin: 0;
 	padding: 10px 25px;
-	width: 200px;
+	width: 50px;
 	position: fixed;
 	height: 100vh;
 	display: flex;
 	flex-direction: column;
+	justify-content: space-between;
 	align-items: center;
 	background-color: var(--main-white);
 }
@@ -588,38 +589,28 @@ a {
 }
 
 .Menu-brand {
-	display: flex;
-	align-items: center;
-}
-
-.Menu-brand > img {
-	max-width: 22px;
-	margin-right: 5px;
-}
-
-.Menu-brand > h1 {
-	font-size: 20px;
-	font-weight: 900;
-	padding-right: 10px;
+	padding: 10px;
+	color: #003cffb3;
 }
 
 .Menu-item {
-	padding: 10px 100px 10px 16px;
+	padding: 10px;
 	display: flex;
-	justify-content: left;
+	color: var(--main-grey);
 }
 
 .Menu-item-active {
-	padding: 10px 100px 10px 16px;
+	padding: 10px;
 	display: flex;
 	border-radius: 8px;
 	background: var(--gradient-white);
+	color: var(--main-grey);
+	box-shadow: var(--box-shadow-inner);
 }
 
-.Menu-item > span,
-.Menu-item-active > span {
-	padding: 1px 4px 0px 0px;
-	color: var(--main-blue);
+.Menu-settings {
+	margin-bottom: 30px;
+	cursor: pointer;
 }
 
 /* Settings */
@@ -691,10 +682,13 @@ a {
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
-		padding: 10px 0px 10px 20px;
 	}
-	.Menu-item-active {
-		border-radius: 8px 0px 0px 8px;
+	.Menu > ul {
+		display: flex;
+		flex-direction: row;
+	}
+	.Menu-settings {
+		margin: 0 10px 0 0;
 	}
 	.Main {
 		margin-left: 0;
