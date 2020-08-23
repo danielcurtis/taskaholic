@@ -13,6 +13,7 @@ function Signup({ toggle, setToggle }) {
 		<p>
 			By signing up, you agree to{' '}
 			<a
+				style={{ color: 'white' }}
 				href="https://docs.google.com/document/d/1h6rzrxmi0X2RLjMRX1IEB1U0orxDM7u8tvg86InHD1k/edit?usp=sharing"
 				target="_blank"
 				rel="noopener noreferrer">

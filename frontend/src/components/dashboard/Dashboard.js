@@ -59,7 +59,7 @@ function Dashboard() {
 						{loading ? <div></div> : <Timelog tasks={tasks} />}
 					</div>
 
-					<div>
+					<div style={{ overflowX: 'scroll' }}>
 						<h1 style={{ marginTop: 50 }}>Top Habits</h1>
 						{loading ? <div></div> : <Habits habits={habits} />}
 					</div>
