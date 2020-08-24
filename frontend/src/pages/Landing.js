@@ -1,9 +1,9 @@
 // @ts-check
 
 import React, { useState } from 'react';
+import { RiCheckboxMultipleFill } from 'react-icons/ri';
 import Login from '../components/auth/Login';
 import Signup from '../components/auth/Signup';
-import Icon from '../assets/icon.png';
 
 function Landing() {
 	const [toggle, setToggle] = useState(true);
@@ -13,9 +13,9 @@ function Landing() {
 			<div className="Landing-ribbon-wrap">
 				<div className="Landing-ribbon-text">Beta</div>
 			</div>
-			<div className="Landing-box">
+			<div className="Landing-form">
 				<div className="Landing-brand">
-					<img src={Icon} alt="clock" />
+					<RiCheckboxMultipleFill size={'2.5em'} className="Menu-brand" />
 					<h1
 						style={{
 							fontFamily: `Shrikhand`,
@@ -23,13 +23,18 @@ function Landing() {
 						Taskaholic
 					</h1>
 				</div>
-				<h2>Individual task and time tracking for productivity fanatics.</h2>
+				<h2>
+					Individual task and time tracking built for productivity fanatics.
+					<br />
+				</h2>
 				{toggle ? (
 					<Login toggle={toggle} setToggle={setToggle} />
 				) : (
 					<Signup toggle={toggle} setToggle={setToggle} />
 				)}
+				<strong style={{ marginTop: '50px' }}>100% free for Beta users.</strong>
 			</div>
+			<div className="Landing-img" />
 		</div>
 	);
 }

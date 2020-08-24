@@ -24,7 +24,7 @@ function Timelog({ tasks }) {
 
 	tasks.map((el) => {
 		let obj = {
-			task: el.name.length > 18 ? el.name.substring(0, 18) + '...' : el.name,
+			task: el.name.length > 15 ? el.name.substring(0, 15) + '...' : el.name,
 			times: { 0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0 },
 		};
 

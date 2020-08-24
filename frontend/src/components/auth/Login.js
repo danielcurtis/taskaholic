@@ -44,7 +44,7 @@ function Login({ toggle, setToggle }) {
 	};
 
 	return (
-		<div>
+		<div style={{ width: '300px' }}>
 			<form className="Auth-form" onSubmit={handleLogin}>
 				<label>Email:</label>
 				<input

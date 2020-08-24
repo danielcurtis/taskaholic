@@ -1,16 +1,10 @@
 import React from 'react';
-import Icon from '../../../assets/icon.png';
+import { RiCheckboxMultipleFill } from 'react-icons/ri';
 
 function Brand() {
 	return (
-		<div className="Menu-brand">
-			<img src={Icon} alt="clock" />
-			<h1
-				style={{
-					fontFamily: `Shrikhand`,
-				}}>
-				Taskaholic
-			</h1>
+		<div>
+			<RiCheckboxMultipleFill size={'2.5em'} className="Menu-brand" />
 		</div>
 	);
 }
